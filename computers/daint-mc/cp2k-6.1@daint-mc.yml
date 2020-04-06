@@ -1,0 +1,11 @@
+label: "cp2k-6.1-18464"
+description: "CP2K 6.1 compiled by CSCS"
+input_plugin: "cp2k"
+on_computer: true
+remote_abs_path: "/apps/daint/UES/jenkins/7.0.UP01/mc/easybuild/software/CP2K/6.1-CrayGNU-19.10/bin/cp2k.psmp"
+computer: "daint-mc"
+prepend_text: |
+  ###  code prepend_text start ###
+  module load CP2K
+  ###  code prepend_text end ###
+append_text: " "
