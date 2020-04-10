@@ -1,4 +1,3 @@
-  
 label: "daint-mc"
 hostname: "daint.cscs.ch"
 description: Piz Daint supercomputer at CSCS Lugano, Switzerland, multicore partition.
