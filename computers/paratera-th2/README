@@ -1,0 +1,4 @@
+#### NOTE
+
+The hostname of the computer maybe different depend on the proxy host provide by paratera.
+If the username is `<user>@<location>` then the user directory should be setting to `/PARA/<user>/aiida`. 
