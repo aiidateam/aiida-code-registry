@@ -11,7 +11,7 @@ verdi computer setup --config https:///..../mycomputer.yml
 verdi computer configure ssh mycomputer
 ```
 
-Note: Some computers may need to be accessed via a proxy - e.g., for Piz Daint: 
+Note: Some computers may need to be accessed via a proxy - e.g., for Piz Daint:
 ```
 proxy_command: ssh <username>@ela.cscs.ch netcat daint.cscs.ch 22
 ```
