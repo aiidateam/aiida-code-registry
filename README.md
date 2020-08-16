@@ -7,8 +7,13 @@ This repository collects configurations of simulation codes on public compute re
 ## Importing computers into AiiDA
 
 ```
-verdi computer setup --config https:///..../mycomputer.yml
-verdi computer configure ssh mycomputer
+verdi computer setup --config https:///..../computer-setup.yml
+```
+
+Some computers also require specific configuration options and provide a specific `computer-configure.yml` file:
+
+```
+verdi computer configure ssh <computer-name> --config https:///..../computer-configure.yml
 ```
 
 Note: Some computers may need to be accessed via a proxy - e.g., for Piz Daint: 
