@@ -5,8 +5,8 @@ import json
 from pathlib import Path
 
 # Define the parent folder location
-file_path = Path(__file__).parent.absolute()
-library_path = file_path.parent
+folder_path = Path(__file__).parent.absolute()
+library_path = folder_path.parent
 
 # Extract all the data. 
 
@@ -28,7 +28,8 @@ for domain in final_dict:
     final_dict[domain]['default'] = link[2:] 
 
 # Store the extracted information as a single JSON file.
-with open(library_path/'database.json', 'w') as filep:
+os.mkdir(folder_path/'out')
+with open(folder_path/'out/database.json', 'w') as filep:
     json.dump(final_dict, filep, indent=4)
 
 

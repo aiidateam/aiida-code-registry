@@ -1,0 +1,47 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - master
+
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Collect all setup info of computers/codes into a single JSON file.
+      run: |
+        python "${GITHUB_WORKSPACE}/.make_ghpages/generate_json.py"
+        cp -r "${GITHUB_WORKSPACE}/.make_ghpages/out" ${{ runner.temp }}/
+
+    - uses: actions/checkout@v2
+      with:
+        ref: 'gh-pages'
+
+
+    - name: Commit updates
+      id: commit
+      continue-on-error: true  # for expected error condition, see below
+      run: |
+        rm -rfv "${GITHUB_WORKSPACE}/*"
+        cp -r ${{ runner.temp }}/out/* "${GITHUB_WORKSPACE}"/
+        git add -A .
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        # The following command fails if there are no updates (e.g. README change):
+        git commit -m "Deploy to GitHub Pages: ${GITHUB_SHA}"
+
+    - name: Deploy
+      uses: ad-m/github-push-action@v0.6.0
+      if: steps.commit.outcome == 'success'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages
