@@ -1,0 +1,119 @@
+{
+    "fidis.epfl.ch": {
+        "fidis": {
+            "cp2k-5.1.yml": {
+                "label": "cp2k-5.1",
+                "description": "CP2K 5.1 compiled by SCITAS",
+                "input_plugin": "cp2k",
+                "on_computer": true,
+                "remote_abs_path": "/ssoft/spack/cornalin/v2/opt/spack/linux-rhel7-x86_E5v4_Mellanox/intel-17.0.2/cp2k-5.1-gke4ujsx5qhx6zt7ncfo22hajqhp6n6b/bin/cp2k.popt",
+                "computer": "fidis",
+                "prepend_text": "source /ssoft/spack/bin/slmodules.sh -r deprecated\nmodule load intel\nmodule load intel-mpi intel-mkl\nmodule load cp2k/5.1-mpi\nexport CP2K_DATA_DIR=/work/lsmo/aiida-lsmo-codes/data/cp2k/data\n",
+                "append_text": " "
+            },
+            "computer-setup.yml": {
+                "label": "fidis",
+                "hostname": "fidis.epfl.ch",
+                "description": "fidis EPFL computer",
+                "transport": "ssh",
+                "scheduler": "slurm",
+                "work_dir": "/scratch/{username}/aiida_run/",
+                "shebang": "#!/bin/bash",
+                "mpirun_command": "srun -n {tot_num_mpiprocs}",
+                "mpiprocs_per_machine": "28",
+                "prepend_text": " ",
+                "append_text": " "
+            }
+        },
+        "default": "fidis"
+    },
+    "paratera": {
+        "tianhe-2": {
+            "pw65@paratera-th2.yml": {
+                "label": "pw6.5",
+                "description": "quantum_espresso v6.5",
+                "input_plugin": "quantumespresso.pw",
+                "on_computer": true,
+                "remote_abs_path": "/WORK/app/Quantum_Espresso/6.5-MPI/bin/pw.x",
+                "computer": "papp",
+                "prepend_text": "ulimit -s unlimited\nsource /PARA/app/scripts/cn-module.sh\nmodule load Quantum_Espresso/6.5-icc-15.0.1\n",
+                "append_text": " "
+            },
+            "paratera-th2-configure.yml": {
+                "port": 2200,
+                "allow_agent": false,
+                "safe_interval": 60.0,
+                "use_login_shell": true
+            },
+            "README": "The hostname of the computer maybe different depend on the proxy host provide by paratera. If the username is `<user>@<location>` then the user's aiida scratch directory should be setting to `/PARA/<user>/aiida`. For example, if the username to login to the server is `pp00@GZ` the user directory after login would be seems like `/PARA/pp00/`.",
+            "computer-setup.yml": {
+                "label": "paratera-th2",
+                "description": "TianHe-2 supercomputer provided by paratera",
+                "hostname": "119.90.38.52",
+                "transport": "ssh",
+                "scheduler": "slurm",
+                "shebang": "#!/usr/bin/env bash",
+                "work_dir": "/PARA/{username}/aiida",
+                "mpirun_command": "srun -n {tot_num_mpiprocs}",
+                "mpiprocs_per_machine": 24,
+                "prepend_text": "",
+                "append_text": ""
+            }
+        },
+        "default": "tianhe-2"
+    },
+    "daint.cscs.ch": {
+        "hybrid": {
+            "cp2k-6.1.yml": {
+                "label": "cp2k-6.1-18464",
+                "description": "CP2K with CUDA on daint, compiled by CSCS",
+                "input_plugin": "cp2k",
+                "on_computer": true,
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP01/gpu/easybuild/software/CP2K/6.1-CrayGNU-19.10-cuda-10.1/bin/cp2k.psmp",
+                "computer": "daint-hybrid",
+                "prepend_text": "###  code prepend_text start ###\nmodule load CP2K\n###  code prepend_text end ###\n",
+                "append_text": " "
+            },
+            "computer-setup.yml": {
+                "label": "daint-hybrid",
+                "hostname": "daint.cscs.ch",
+                "description": "Piz Daint supercomputer at CSCS Lugano, Switzerland, using the hybrid partition. HyperThreading is off",
+                "transport": "ssh",
+                "scheduler": "slurm",
+                "shebang": "#!/bin/bash -l",
+                "mpiprocs_per_machine": "12",
+                "num_cores_per_mpiproc": "1",
+                "queue_name": "normal",
+                "work_dir": "/scratch/snx3000/{username}/aiida/",
+                "mpirun_command": "srun -n {tot_num_mpiprocs}",
+                "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=normal\n#SBATCH --constraint=gpu\n#SBATCH --hint=nomultithread\nexport OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK\nexport CRAY_CUDA_MPS=1\nulimit -s unlimited\nmodule load daint-gpu\n### computer prepend_text end ###\n"
+            }
+        },
+        "multicore": {
+            "cp2k-6.1.yml": {
+                "label": "cp2k-6.1-18464",
+                "description": "CP2K 6.1 compiled by CSCS",
+                "input_plugin": "cp2k",
+                "on_computer": true,
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP01/mc/easybuild/software/CP2K/6.1-CrayGNU-19.10/bin/cp2k.psmp",
+                "computer": "daint-mc",
+                "prepend_text": "###  code prepend_text start ###\nmodule load CP2K\n###  code prepend_text end ###\n",
+                "append_text": " "
+            },
+            "computer-setup.yml": {
+                "label": "daint-mc",
+                "hostname": "daint.cscs.ch",
+                "description": "Piz Daint supercomputer at CSCS Lugano, Switzerland, multicore partition.",
+                "transport": "ssh",
+                "scheduler": "slurm",
+                "work_dir": "/scratch/snx3000/{username}/aiida_run/",
+                "shebang": "#!/bin/bash",
+                "mpirun_command": "srun -n {tot_num_mpiprocs}",
+                "mpiprocs_per_machine": "36",
+                "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=normal\n#SBATCH --account=mr0\n#SBATCH --constraint=mc\n#SBATCH --cpus-per-task=1\nexport OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK\nsource $MODULESHOME/init/bash\nmodule load daint-mc\nulimit -s unlimited\n### computer prepend_text end ###\n",
+                "append_text": " "
+            }
+        },
+        "default": "hybrid"
+    }
+}
