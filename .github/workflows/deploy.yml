@@ -33,11 +33,11 @@ jobs:
 
     - name: Commit updates
       id: commit
-      continue-on-error: true  # for expected error condition, see below
       run: |
         rm -rfv "${GITHUB_WORKSPACE}/*"
         cp -r ${{ runner.temp }}/out/* "${GITHUB_WORKSPACE}"/
         git add -A .
+        if git diff --cached --quiet; then echo "No changes to the output on this push; exiting."; exit 0; fi
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         # The following command fails if there are no updates (e.g. README change):
