@@ -10,6 +10,8 @@ library_path = folder_path.parent
 
 # Extract all the data. 
 
+ALLOWED_YAML_SUFFIXES = ['.yml', '.yaml']
+
 # Get all the available domains.
 final_dict = {dmn:{} for dmn in os.listdir(library_path) if os.path.isdir(library_path/dmn) and not dmn.startswith('.')}
 
@@ -19,9 +21,16 @@ for domain in final_dict:
 
     # Loop over the defined computers, and extract their setup and setup codes defined on them.
     for computer in final_dict[domain]:
-        for configuration in os.listdir(library_path/domain/computer):
+
+        for configuration in [ conf for conf in os.listdir(library_path/domain/computer) if conf != "README"]:
             with open(library_path/domain/computer/configuration) as yaml_file:
-                final_dict[domain][computer][configuration[:-4]] = yaml.load(yaml_file, Loader=yaml.FullLoader)
+                for suffix in ALLOWED_YAML_SUFFIXES:
+                    if configuration.endswith(suffix):
+                        configuration = configuration[:len(suffix)]
+                        break
+                else:
+                    raise ValueError(f"The file {configuration} has unsupported extention. Please use one of: {ALLOWED_YAML_SUFFIXES}")
+                final_dict[domain][computer][configuration] = yaml.load(yaml_file, Loader=yaml.FullLoader)
 
     # Extract the default computer.
     link = os.readlink(library_path/domain/'default')
