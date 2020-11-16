@@ -20,8 +20,8 @@ for domain in final_dict:
     # Loop over the defined computers, and extract their setup and setup codes defined on them.
     for computer in final_dict[domain]:
         for configuration in os.listdir(library_path/domain/computer):
-        	with open(library_path/domain/computer/configuration) as yaml_file:
-        		final_dict[domain][computer][configuration] = yaml.load(yaml_file, Loader=yaml.FullLoader)
+            with open(library_path/domain/computer/configuration) as yaml_file:
+                final_dict[domain][computer][configuration[:-4]] = yaml.load(yaml_file, Loader=yaml.FullLoader)
 
     # Extract the default computer.
     link = os.readlink(library_path/domain/'default')
