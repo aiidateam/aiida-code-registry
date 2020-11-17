@@ -6,7 +6,7 @@ scheduler: "slurm"
 work_dir: "/scratch/snx3000/{username}/aiida_run/"
 shebang: "#!/bin/bash"
 mpirun_command: "srun -n {tot_num_mpiprocs}"
-mpiprocs_per_machine: "36"
+mpiprocs_per_machine: 36
 prepend_text: |
     ### computer prepend_text start ###
     #SBATCH --partition=normal
