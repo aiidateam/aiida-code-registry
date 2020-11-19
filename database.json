@@ -95,7 +95,7 @@
                 "input_plugin": "cp2k",
                 "on_computer": true,
                 "remote_abs_path": "/ssoft/spack/cornalin/v2/opt/spack/linux-rhel7-x86_E5v4_Mellanox/intel-17.0.2/cp2k-5.1-gke4ujsx5qhx6zt7ncfo22hajqhp6n6b/bin/cp2k.popt",
-                "computer": "fidis",
+                "computer": "fidis-ch-315",
                 "prepend_text": "source /ssoft/spack/bin/slmodules.sh -r deprecated\nmodule load intel\nmodule load intel-mpi intel-mkl\nmodule load cp2k/5.1-mpi\nexport CP2K_DATA_DIR=/work/lsmo/aiida-lsmo-codes/data/cp2k/data\n",
                 "append_text": " "
             },
@@ -105,7 +105,7 @@
                 "input_plugin": "ddec",
                 "on_computer": true,
                 "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/chargemol_09_26_2017_ubu18",
-                "computer": "fidis",
+                "computer": "fidis-ch-315",
                 "prepend_text": " ",
                 "append_text": " "
             },
@@ -118,7 +118,7 @@
                 "input_plugin": "zeopp.network",
                 "on_computer": true,
                 "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/network_46ce745_ubu18",
-                "computer": "fidis-serial",
+                "computer": "fidis-ch-315",
                 "prepend_text": " ",
                 "append_text": " "
             },
@@ -141,7 +141,7 @@
                 "input_plugin": "raspa",
                 "on_computer": true,
                 "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/simulate_4467e14_fidis",
-                "computer": "fidis-serial",
+                "computer": "fidis-ch-315",
                 "prepend_text": "export RASPA_DIR=/work/lsmo/aiida-lsmo-codes/data/raspa\nexport DYLD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\nexport LD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\n",
                 "append_text": " "
             }
