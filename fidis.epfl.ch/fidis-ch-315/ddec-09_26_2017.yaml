@@ -3,6 +3,6 @@ description: "chargemol_09_26_2017 precompiled linux/parallel binary from https:
 input_plugin: "ddec"
 on_computer: true
 remote_abs_path: "/work/lsmo/aiida-lsmo-codes/bin/chargemol_09_26_2017_ubu18"
-computer: "fidis"
+computer: "fidis-ch-315"
 prepend_text: " "
 append_text: " "
