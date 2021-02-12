@@ -34,6 +34,44 @@
         "default": "tianhe-2"
     },
     "fidis.epfl.ch": {
+        "fidis-serial": {
+            "zeopp-46ce745": {
+                "label": "zeopp-46ce745",
+                "description": "Zeo++ cloned from https://github.com/mharanczyk/zeoplusplus",
+                "input_plugin": "zeopp.network",
+                "on_computer": true,
+                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/network_46ce745_ubu18",
+                "computer": "fidis-serial",
+                "prepend_text": " ",
+                "append_text": " "
+            },
+            "computer-setup": {
+                "label": "fidis-serial",
+                "hostname": "fidis.epfl.ch",
+                "description": "Fidis EPFL computer using serial partition",
+                "transport": "ssh",
+                "scheduler": "slurm",
+                "work_dir": "/scratch/{username}/aiida_run/",
+                "shebang": "#!/bin/bash",
+                "mpirun_command": "srun -n {tot_num_mpiprocs}",
+                "mpiprocs_per_machine": "1",
+                "prepend_text": "#SBATCH --partition=serial",
+                "append_text": " "
+            },
+            "computer-configure": {
+                "proxy_command": "ssh -q -Y put_your_username@lsmosrv1.epfl.ch netcat fidis.epfl.ch 22"
+            },
+            "raspa-4467e14": {
+                "label": "raspa-4467e14",
+                "description": "RASPA2 cloned from https://github.com/iRASPA/RASPA2.git",
+                "input_plugin": "raspa",
+                "on_computer": true,
+                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/simulate_4467e14_fidis",
+                "computer": "fidis-serial",
+                "prepend_text": "export RASPA_DIR=/work/lsmo/aiida-lsmo-codes/data/raspa\nexport DYLD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\nexport LD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\n",
+                "append_text": " "
+            }
+        },
         "fidis": {
             "computer-setup": {
                 "label": "fidis",
