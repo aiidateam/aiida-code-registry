@@ -54,7 +54,7 @@
                 "work_dir": "/scratch/{username}/aiida_run/",
                 "shebang": "#!/bin/bash",
                 "mpirun_command": "srun -n {tot_num_mpiprocs}",
-                "mpiprocs_per_machine": "1",
+                "mpiprocs_per_machine": 1,
                 "prepend_text": "#SBATCH --partition=serial",
                 "append_text": " "
             },
