@@ -157,6 +157,10 @@
                 "computer": "eiger-mc-mr0-debug",
                 "prepend_text": "module load cpeIntel/21.06\nmodule load QuantumESPRESSO/6.7.0\n",
                 "append_text": " "
+            },
+            "computer-configure": {
+                "safe_interval": 60,
+                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat ela.cscs.ch 22"
             }
         },
         "multicore-mr0": {
@@ -182,6 +186,10 @@
                 "computer": "eiger-mc-mr0",
                 "prepend_text": "module load cpeIntel/21.06\nmodule load QuantumESPRESSO/6.7.0\n",
                 "append_text": " "
+            },
+            "computer-configure": {
+                "safe_interval": 60,
+                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat ela.cscs.ch 22"
             }
         },
         "default": "lticore-mr0"
