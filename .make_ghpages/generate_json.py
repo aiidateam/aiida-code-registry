@@ -32,7 +32,7 @@ for domain in final_dict:
 
     # Extract the default computer.
     link = os.readlink(library_path/domain/'default')
-    final_dict[domain]['default'] = link[2:] 
+    final_dict[domain]['default'] = str(Path(link))
 
 # Store the extracted information as a single JSON file.
 os.mkdir(folder_path/'out')
