@@ -192,7 +192,7 @@
                 "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat ela.cscs.ch 22"
             }
         },
-        "default": "lticore-mr0"
+        "default": "multicore-mr0"
     },
     "daint.cscs.ch": {
         "hybrid-s904": {
