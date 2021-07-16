@@ -144,7 +144,7 @@
                 "work_dir": "/scratch/e1000/{username}/aiida/",
                 "shebang": "#!/bin/bash",
                 "mpirun_command": "srun -n {tot_num_mpiprocs}",
-                "mpiprocs_per_machine": 64,
+                "mpiprocs_per_machine": 128,
                 "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=debug\n#SBATCH --account=mr0\n#SBATCH --constraint=mc\n#SBATCH --time=00:30:00\n\nexport OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}\nexport OMP_PROC_BIND=close\nexport OMP_PLACES=cores\n### computer prepend_text end ###\n",
                 "append_text": " "
             },
@@ -173,7 +173,7 @@
                 "work_dir": "/scratch/e1000/{username}/aiida/",
                 "shebang": "#!/bin/bash",
                 "mpirun_command": "srun -n {tot_num_mpiprocs}",
-                "mpiprocs_per_machine": 64,
+                "mpiprocs_per_machine": 128,
                 "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=normal\n#SBATCH --account=mr0\n#SBATCH --constraint=mc\n\nexport OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}\nexport OMP_PROC_BIND=close\nexport OMP_PLACES=cores\n### computer prepend_text end ###\n",
                 "append_text": " "
             },
