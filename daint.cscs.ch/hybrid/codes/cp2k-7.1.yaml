@@ -1,0 +1,10 @@
+label: cp2k-7.1
+description: CP2K v7.1 with CUDA on daint, compiled by CSCS
+input_plugin: cp2k
+on_computer: true
+remote_abs_path: /apps/daint/UES/jenkins/7.0.UP02-20.11/gpu/easybuild/software/CP2K/8.1-CrayGNU-20.11-cuda/bin/cp2k.psmp
+prepend_text: |
+  ###  code prepend_text start ###
+  module load CP2K/7.1-CrayGNU-20.11-cuda
+  ###  code prepend_text end ###
+append_text: " "

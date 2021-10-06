@@ -1,6 +1,6 @@
-label: "daint-hybrid-s1005"
+label: "daint-pr128"
 hostname: "daint.cscs.ch"
-description: "Piz Daint supercomputer at CSCS Lugano, Switzerland, using the hybrid partition. Project s1005"
+description: "Piz Daint supercomputer at CSCS Lugano, Switzerland, using the hybrid partition. Project pr128"
 transport: "ssh"
 scheduler: "slurm"
 shebang: "#!/bin/bash -l"
@@ -11,7 +11,7 @@ work_dir: "/scratch/snx3000/{username}/aiida/"
 mpirun_command: "srun -n {tot_num_mpiprocs}"
 prepend_text: |
   #SBATCH --partition=normal
-  #SBATCH --account=s1005
+  #SBATCH --account=pr128
   #SBATCH --constraint=gpu
   export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}
   source $MODULESHOME/init/bash

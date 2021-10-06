@@ -19,3 +19,4 @@ prepend_text: |
   ulimit -s unlimited
   module load daint-gpu
   ### computer prepend_text end ###
+append_text: False
