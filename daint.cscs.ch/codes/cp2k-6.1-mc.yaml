@@ -1,4 +1,4 @@
-label: "cp2k-6.1-cpu"
+label: "cp2k-6.1-mc"
 description: "CP2K 6.1 compiled by CSCS"
 input_plugin: "cp2k"
 on_computer: true

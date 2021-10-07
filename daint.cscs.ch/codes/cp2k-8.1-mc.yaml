@@ -1,4 +1,4 @@
-label: "cp2k-8.1-cpu"
+label: "cp2k-8.1-mc"
 description: "CP2K 8.1 compiled by CSCS"
 input_plugin: "cp2k"
 on_computer: true
