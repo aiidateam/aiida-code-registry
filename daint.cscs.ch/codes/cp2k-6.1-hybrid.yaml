@@ -1,9 +1,8 @@
-label: "cp2k-6.1-18464"
+label: "cp2k-6.1"
 description: "CP2K with CUDA on daint, compiled by CSCS"
 input_plugin: "cp2k"
 on_computer: true
 remote_abs_path: "/apps/daint/UES/jenkins/7.0.UP01/gpu/easybuild/software/CP2K/6.1-CrayGNU-19.10-cuda-10.1/bin/cp2k.psmp"
-computer: "daint-hybrid"
 prepend_text: |
   ###  code prepend_text start ###
   module load CP2K
