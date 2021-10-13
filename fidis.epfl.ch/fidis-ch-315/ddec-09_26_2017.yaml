@@ -1,8 +1,0 @@
-label: "ddec-09_26_2017"
-description: "chargemol_09_26_2017 precompiled linux/parallel binary from https://sourceforge.net/projects/ddec/files/"
-input_plugin: "ddec"
-on_computer: true
-remote_abs_path: "/work/lsmo/aiida-lsmo-codes/bin/chargemol_09_26_2017_ubu18"
-computer: "fidis-ch-315"
-prepend_text: " "
-append_text: " "

@@ -1,10 +1,9 @@
 ---
-label: "pw6.5"
-description: "quantum_espresso v6.5"
+label: "pw-6.5"
+description: "Quantum ESPRESSO v6.5"
 input_plugin: "quantumespresso.pw"
 on_computer: true
 remote_abs_path: "/WORK/app/Quantum_Espresso/6.5-MPI/bin/pw.x"
-computer: "papp"
 prepend_text: |
   ulimit -s unlimited
   source /PARA/app/scripts/cn-module.sh
