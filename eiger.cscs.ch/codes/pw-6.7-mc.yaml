@@ -1,4 +1,4 @@
-label: "pw-6.7-multicore"
+label: "pw-6.7-mc"
 description: "QuantumESPRESSO 6.7.0 compiled by CSCS"
 input_plugin: "quantumespresso.pw"
 on_computer: true
