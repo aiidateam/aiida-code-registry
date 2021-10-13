@@ -1,201 +1,36 @@
 {
-    "fidis.epfl.ch": {
-        "fidis": {
-            "ddec-09_26_2017": {
-                "label": "ddec-09_26_2017",
-                "description": "chargemol_09_26_2017 precompiled linux/parallel binary from https://sourceforge.net/projects/ddec/files/",
-                "input_plugin": "ddec",
-                "on_computer": true,
-                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/chargemol_09_26_2017_ubu18",
-                "computer": "fidis",
-                "prepend_text": " ",
-                "append_text": " "
-            },
-            "cp2k-5.1": {
-                "label": "cp2k-5.1",
-                "description": "CP2K 5.1 compiled by SCITAS",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/ssoft/spack/cornalin/v2/opt/spack/linux-rhel7-x86_E5v4_Mellanox/intel-17.0.2/cp2k-5.1-gke4ujsx5qhx6zt7ncfo22hajqhp6n6b/bin/cp2k.popt",
-                "computer": "fidis",
-                "prepend_text": "source /ssoft/spack/bin/slmodules.sh -r deprecated\nmodule load intel\nmodule load intel-mpi intel-mkl\nmodule load cp2k/5.1-mpi\nexport CP2K_DATA_DIR=/work/lsmo/aiida-lsmo-codes/data/cp2k/data\n",
-                "append_text": " "
-            },
-            "computer-setup": {
-                "label": "fidis",
-                "hostname": "fidis.epfl.ch",
-                "description": "fidis EPFL computer",
-                "transport": "ssh",
-                "scheduler": "slurm",
-                "work_dir": "/scratch/{username}/aiida_run/",
-                "shebang": "#!/bin/bash",
-                "mpirun_command": "srun -n {tot_num_mpiprocs}",
-                "mpiprocs_per_machine": 28,
-                "prepend_text": " ",
-                "append_text": " "
-            }
-        },
-        "fidis-serial": {
-            "zeopp-46ce745": {
-                "label": "zeopp-46ce745",
-                "description": "Zeo++ cloned from https://github.com/mharanczyk/zeoplusplus",
-                "input_plugin": "zeopp.network",
-                "on_computer": true,
-                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/network_46ce745_ubu18",
-                "computer": "fidis-serial",
-                "prepend_text": " ",
-                "append_text": " "
-            },
-            "raspa-4467e14": {
-                "label": "raspa-4467e14",
-                "description": "RASPA2 cloned from https://github.com/iRASPA/RASPA2.git",
-                "input_plugin": "raspa",
-                "on_computer": true,
-                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/simulate_4467e14_fidis",
-                "computer": "fidis-serial",
-                "prepend_text": "export RASPA_DIR=/work/lsmo/aiida-lsmo-codes/data/raspa\nexport DYLD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\nexport LD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\n",
-                "append_text": " "
-            },
-            "computer-setup": {
-                "label": "fidis-serial",
-                "hostname": "fidis.epfl.ch",
-                "description": "Fidis EPFL computer using serial partition",
-                "transport": "ssh",
-                "scheduler": "slurm",
-                "work_dir": "/scratch/{username}/aiida_run/",
-                "shebang": "#!/bin/bash",
-                "mpirun_command": "srun -n {tot_num_mpiprocs}",
-                "mpiprocs_per_machine": 1,
-                "prepend_text": "#SBATCH --partition=serial",
-                "append_text": " "
-            },
-            "computer-configure": {
-                "proxy_command": "ssh -q -Y put_your_username@lsmosrv1.epfl.ch netcat fidis.epfl.ch 22"
-            }
-        },
-        "fidis-ch-315": {
-            "ddec-09_26_2017": {
-                "label": "ddec-09_26_2017",
-                "description": "chargemol_09_26_2017 precompiled linux/parallel binary from https://sourceforge.net/projects/ddec/files/",
-                "input_plugin": "ddec",
-                "on_computer": true,
-                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/chargemol_09_26_2017_ubu18",
-                "computer": "fidis-ch-315",
-                "prepend_text": " ",
-                "append_text": " "
-            },
-            "cp2k-5.1": {
-                "label": "cp2k-5.1",
-                "description": "CP2K 5.1 compiled by SCITAS",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/ssoft/spack/cornalin/v2/opt/spack/linux-rhel7-x86_E5v4_Mellanox/intel-17.0.2/cp2k-5.1-gke4ujsx5qhx6zt7ncfo22hajqhp6n6b/bin/cp2k.popt",
-                "computer": "fidis-ch-315",
-                "prepend_text": "source /ssoft/spack/bin/slmodules.sh -r deprecated\nmodule load intel\nmodule load intel-mpi intel-mkl\nmodule load cp2k/5.1-mpi\nexport CP2K_DATA_DIR=/work/lsmo/aiida-lsmo-codes/data/cp2k/data\n",
-                "append_text": " "
-            },
-            "zeopp-46ce745": {
-                "label": "zeopp-46ce745",
-                "description": "Zeo++ cloned from https://github.com/mharanczyk/zeoplusplus",
-                "input_plugin": "zeopp.network",
-                "on_computer": true,
-                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/network_46ce745_ubu18",
-                "computer": "fidis-ch-315",
-                "prepend_text": " ",
-                "append_text": " "
-            },
-            "raspa-4467e14": {
-                "label": "raspa-4467e14",
-                "description": "RASPA2 cloned from https://github.com/iRASPA/RASPA2.git",
-                "input_plugin": "raspa",
-                "on_computer": true,
-                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/simulate_4467e14_fidis",
-                "computer": "fidis-ch-315",
-                "prepend_text": "export RASPA_DIR=/work/lsmo/aiida-lsmo-codes/data/raspa\nexport DYLD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\nexport LD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\n",
-                "append_text": " "
-            },
-            "computer-setup": {
-                "label": "fidis-ch-315",
-                "hostname": "fidis.epfl.ch",
-                "description": "fidis EPFL computer",
-                "transport": "ssh",
-                "scheduler": "slurm",
-                "work_dir": "/scratch/{username}/aiida_run/",
-                "shebang": "#!/bin/bash",
-                "mpirun_command": "srun -n {tot_num_mpiprocs}",
-                "mpiprocs_per_machine": 28,
-                "prepend_text": "#SBATCH --reservation=ch-315\n#SBATCH --account=ch-315\n#SBATCH --partition serial\n",
-                "append_text": " "
-            },
-            "computer-configure": {
-                "proxy_command": "ssh -q -Y put_your_username@lsmosrv1.epfl.ch netcat fidis.epfl.ch 22"
-            }
-        },
-        "default": "fidis"
-    },
-    "eiger.cscs.ch": {
-        "multicore-mr0-debug": {
-            "computer-setup": {
-                "label": "eiger-mc-mr0-debug",
-                "hostname": "eiger.cscs.ch",
-                "description": "Eiger is the production partition on Alps, the HPE Cray EX Supercomputer.",
-                "transport": "ssh",
-                "scheduler": "slurm",
-                "work_dir": "/scratch/e1000/{username}/aiida/",
-                "shebang": "#!/bin/bash",
-                "mpirun_command": "srun -n {tot_num_mpiprocs}",
-                "mpiprocs_per_machine": 128,
-                "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=debug\n#SBATCH --account=mr0\n#SBATCH --constraint=mc\n#SBATCH --time=00:30:00\n\nexport OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}\nexport OMP_PROC_BIND=close\nexport OMP_PLACES=cores\n### computer prepend_text end ###\n",
-                "append_text": " "
-            },
-            "pw-6.7": {
-                "label": "pw-6.7",
-                "description": "QuantumESPRESSO 6.7.0 compiled by CSCS",
-                "input_plugin": "quantumespresso.pw",
-                "on_computer": true,
-                "remote_abs_path": "/apps/eiger/UES/jenkins/1.4.0/software/QuantumESPRESSO/6.7.0-cpeIntel-21.06/bin/pw.x",
-                "computer": "eiger-mc-mr0-debug",
-                "prepend_text": "module load cpeIntel/21.06\nmodule load QuantumESPRESSO/6.7.0\n",
-                "append_text": " "
-            },
-            "computer-configure": {
-                "safe_interval": 60,
-                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat ela.cscs.ch 22"
-            }
-        },
-        "multicore-mr0": {
-            "computer-setup": {
-                "label": "eiger-mc-mr0",
-                "hostname": "eiger.cscs.ch",
-                "description": "Eiger is the production partition on Alps, the HPE Cray EX Supercomputer.",
-                "transport": "ssh",
-                "scheduler": "slurm",
-                "work_dir": "/scratch/e1000/{username}/aiida/",
-                "shebang": "#!/bin/bash",
-                "mpirun_command": "srun -n {tot_num_mpiprocs}",
-                "mpiprocs_per_machine": 128,
-                "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=normal\n#SBATCH --account=mr0\n#SBATCH --constraint=mc\n\nexport OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}\nexport OMP_PROC_BIND=close\nexport OMP_PLACES=cores\n### computer prepend_text end ###\n",
-                "append_text": " "
-            },
-            "pw-6.7": {
-                "label": "pw-6.7",
-                "description": "QuantumESPRESSO 6.7.0 compiled by CSCS",
-                "input_plugin": "quantumespresso.pw",
-                "on_computer": true,
-                "remote_abs_path": "/apps/eiger/UES/jenkins/1.4.0/software/QuantumESPRESSO/6.7.0-cpeIntel-21.06/bin/pw.x",
-                "computer": "eiger-mc-mr0",
-                "prepend_text": "module load cpeIntel/21.06\nmodule load QuantumESPRESSO/6.7.0\n",
-                "append_text": " "
-            },
-            "computer-configure": {
-                "safe_interval": 60,
-                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat ela.cscs.ch 22"
-            }
-        },
-        "default": "multicore-mr0"
-    },
     "daint.cscs.ch": {
         "hybrid-s904": {
+            "pw-6.5": {
+                "label": "pw-6.5",
+                "description": "PW compiled for daint-mc",
+                "input_plugin": "quantumespresso.pw",
+                "on_computer": true,
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/QuantumESPRESSO/6.5-CrayIntel-20.08/bin/pw.x",
+                "computer": "daint-hybrid-s904",
+                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO/6.5-CrayIntel-20.08\n",
+                "append_text": " "
+            },
+            "cp2k-7.1": {
+                "label": "cp2k-7.1",
+                "description": "CP2K compiled for daint-gpu",
+                "input_plugin": "cp2k",
+                "on_computer": true,
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/gpu/easybuild/software/CP2K/7.1-CrayGNU-20.08-cuda/bin/cp2k.psmp",
+                "computer": "daint-hybrid-s904",
+                "prepend_text": "module load daint-gpu\nmodule load CP2K/7.1-CrayGNU-20.08-cuda\n",
+                "append_text": " "
+            },
+            "projwfc-6.5": {
+                "label": "projwfc-6.5",
+                "description": "PROJWFC compiled for daint-mc",
+                "input_plugin": "quantumespresso.projwfc",
+                "on_computer": true,
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/QuantumESPRESSO/6.5-CrayIntel-20.08/bin/projwfc.x",
+                "computer": "daint-hybrid-s904",
+                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO/6.5-CrayIntel-20.08\n",
+                "append_text": " "
+            },
             "pp-6.5": {
                 "label": "pp-6.5",
                 "description": "PP compiled for daint-mc",
@@ -216,25 +51,9 @@
                 "prepend_text": "module load daint-gpu\nmodule load CP2K/8.1-CrayGNU-20.08-cuda\n",
                 "append_text": " "
             },
-            "pw-6.5": {
-                "label": "pw-6.5",
-                "description": "PW compiled for daint-mc",
-                "input_plugin": "quantumespresso.pw",
-                "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/QuantumESPRESSO/6.5-CrayIntel-20.08/bin/pw.x",
-                "computer": "daint-hybrid-s904",
-                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO/6.5-CrayIntel-20.08\n",
-                "append_text": " "
-            },
-            "cp2k-7.1": {
-                "label": "cp2k-7.1",
-                "description": "CP2K compiled for daint-gpu",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/gpu/easybuild/software/CP2K/7.1-CrayGNU-20.08-cuda/bin/cp2k.psmp",
-                "computer": "daint-hybrid-s904",
-                "prepend_text": "module load daint-gpu\nmodule load CP2K/7.1-CrayGNU-20.08-cuda\n",
-                "append_text": " "
+            "computer-configure": {
+                "safe_interval": 60,
+                "proxy_command": "ssh -q -Y put_your_username@ela.cscs.ch netcat ela.cscs.ch 22"
             },
             "computer-setup": {
                 "label": "daint-hybrid-s904",
@@ -249,101 +68,17 @@
                 "work_dir": "/scratch/snx3000/{username}/aiida/",
                 "mpirun_command": "srun -n {tot_num_mpiprocs}",
                 "prepend_text": "#SBATCH --partition=normal\n#SBATCH --account=s904\n#SBATCH --constraint=gpu\nexport OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}\nsource $MODULESHOME/init/bash\nexport CRAY_CUDA_MPS=1\nulimit -s unlimited\n"
-            },
-            "projwfc-6.5": {
-                "label": "projwfc-6.5",
-                "description": "PROJWFC compiled for daint-mc",
-                "input_plugin": "quantumespresso.projwfc",
-                "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/QuantumESPRESSO/6.5-CrayIntel-20.08/bin/projwfc.x",
-                "computer": "daint-hybrid-s904",
-                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO/6.5-CrayIntel-20.08\n",
-                "append_text": " "
-            },
-            "computer-configure": {
-                "safe_interval": 60,
-                "proxy_command": "ssh -q -Y put_your_username@ela.cscs.ch netcat ela.cscs.ch 22"
-            }
-        },
-        "hybrid-s1005": {
-            "pp-6.5": {
-                "label": "pp-6.5",
-                "description": "PP compiled for daint-mc",
-                "input_plugin": "quantumespresso.pp",
-                "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/QuantumESPRESSO/6.5-CrayIntel-20.08/bin/pp.x",
-                "computer": "daint-hybrid-s1005",
-                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO/6.5-CrayIntel-20.08\n",
-                "append_text": " "
-            },
-            "cp2k-8.1": {
-                "label": "cp2k-8.1",
-                "description": "CP2K compiled for daint-gpu",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/gpu/easybuild/software/CP2K/8.1-CrayGNU-20.08-cuda/bin/cp2k.psmp",
-                "computer": "daint-hybrid-s1005",
-                "prepend_text": "module load daint-gpu\nmodule load CP2K/8.1-CrayGNU-20.08-cuda\n",
-                "append_text": " "
-            },
-            "pw-6.5": {
-                "label": "pw-6.5",
-                "description": "PW compiled for daint-mc",
-                "input_plugin": "quantumespresso.pw",
-                "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/QuantumESPRESSO/6.5-CrayIntel-20.08/bin/pw.x",
-                "computer": "daint-hybrid-s1005",
-                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO/6.5-CrayIntel-20.08\n",
-                "append_text": " "
-            },
-            "cp2k-7.1": {
-                "label": "cp2k-7.1",
-                "description": "CP2K compiled for daint-gpu",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/gpu/easybuild/software/CP2K/7.1-CrayGNU-20.08-cuda/bin/cp2k.psmp",
-                "computer": "daint-hybrid-s1005",
-                "prepend_text": "module load daint-gpu\nmodule load CP2K/7.1-CrayGNU-20.08-cuda\n",
-                "append_text": " "
-            },
-            "computer-setup": {
-                "label": "daint-hybrid-s1005",
-                "hostname": "daint.cscs.ch",
-                "description": "Piz Daint supercomputer at CSCS Lugano, Switzerland, using the hybrid partition. Project s1005",
-                "transport": "ssh",
-                "scheduler": "slurm",
-                "shebang": "#!/bin/bash -l",
-                "mpiprocs_per_machine": 12,
-                "num_cores_per_mpiproc": 1,
-                "queue_name": "normal",
-                "work_dir": "/scratch/snx3000/{username}/aiida/",
-                "mpirun_command": "srun -n {tot_num_mpiprocs}",
-                "prepend_text": "#SBATCH --partition=normal\n#SBATCH --account=s1005\n#SBATCH --constraint=gpu\nexport OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}\nsource $MODULESHOME/init/bash\nexport CRAY_CUDA_MPS=1\nulimit -s unlimited\n"
-            },
-            "projwfc-6.5": {
-                "label": "projwfc-6.5",
-                "description": "PROJWFC compiled for daint-mc",
-                "input_plugin": "quantumespresso.projwfc",
-                "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/QuantumESPRESSO/6.5-CrayIntel-20.08/bin/projwfc.x",
-                "computer": "daint-hybrid-s1005",
-                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO/6.5-CrayIntel-20.08\n",
-                "append_text": " "
-            },
-            "computer-configure": {
-                "safe_interval": 60,
-                "proxy_command": "ssh -q -Y put_your_username@ela.cscs.ch netcat ela.cscs.ch 22"
             }
         },
         "multicore": {
-            "cp2k-6.1": {
-                "label": "cp2k-6.1-18464",
-                "description": "CP2K 6.1 compiled by CSCS",
+            "cp2k-7.1": {
+                "label": "cp2k-7.1-e635599",
+                "description": "CP2K 7.1 compiled by CSCS",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP01/mc/easybuild/software/CP2K/6.1-CrayGNU-19.10/bin/cp2k.psmp",
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/CP2K/7.1-CrayGNU-20.08/bin/cp2k.psmp",
                 "computer": "daint-mc",
-                "prepend_text": "###  code prepend_text start ###\nmodule load CP2K\n###  code prepend_text end ###\n",
+                "prepend_text": "###  code prepend_text start ###\nmodule load intel\nmodule load CP2K/7.1-CrayGNU-20.08\n###  code prepend_text end ###\n",
                 "append_text": " "
             },
             "cp2k-8.1": {
@@ -356,14 +91,14 @@
                 "prepend_text": "###  code prepend_text start ###\nmodule load CP2K/8.1-CrayGNU-20.08\n###  code prepend_text end ###\n",
                 "append_text": " "
             },
-            "cp2k-7.1": {
-                "label": "cp2k-7.1-e635599",
-                "description": "CP2K 7.1 compiled by CSCS",
+            "cp2k-6.1": {
+                "label": "cp2k-6.1-18464",
+                "description": "CP2K 6.1 compiled by CSCS",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/CP2K/7.1-CrayGNU-20.08/bin/cp2k.psmp",
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP01/mc/easybuild/software/CP2K/6.1-CrayGNU-19.10/bin/cp2k.psmp",
                 "computer": "daint-mc",
-                "prepend_text": "###  code prepend_text start ###\nmodule load intel\nmodule load CP2K/7.1-CrayGNU-20.08\n###  code prepend_text end ###\n",
+                "prepend_text": "###  code prepend_text start ###\nmodule load CP2K\n###  code prepend_text end ###\n",
                 "append_text": " "
             },
             "computer-setup": {
@@ -406,23 +141,80 @@
                 "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=normal\n#SBATCH --constraint=gpu\n#SBATCH --hint=nomultithread\nexport OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK\nexport CRAY_CUDA_MPS=1\nulimit -s unlimited\nmodule load daint-gpu\n### computer prepend_text end ###\n"
             }
         },
+        "hybrid-s1005": {
+            "pw-6.5": {
+                "label": "pw-6.5",
+                "description": "PW compiled for daint-mc",
+                "input_plugin": "quantumespresso.pw",
+                "on_computer": true,
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/QuantumESPRESSO/6.5-CrayIntel-20.08/bin/pw.x",
+                "computer": "daint-hybrid-s1005",
+                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO/6.5-CrayIntel-20.08\n",
+                "append_text": " "
+            },
+            "cp2k-7.1": {
+                "label": "cp2k-7.1",
+                "description": "CP2K compiled for daint-gpu",
+                "input_plugin": "cp2k",
+                "on_computer": true,
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/gpu/easybuild/software/CP2K/7.1-CrayGNU-20.08-cuda/bin/cp2k.psmp",
+                "computer": "daint-hybrid-s1005",
+                "prepend_text": "module load daint-gpu\nmodule load CP2K/7.1-CrayGNU-20.08-cuda\n",
+                "append_text": " "
+            },
+            "projwfc-6.5": {
+                "label": "projwfc-6.5",
+                "description": "PROJWFC compiled for daint-mc",
+                "input_plugin": "quantumespresso.projwfc",
+                "on_computer": true,
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/QuantumESPRESSO/6.5-CrayIntel-20.08/bin/projwfc.x",
+                "computer": "daint-hybrid-s1005",
+                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO/6.5-CrayIntel-20.08\n",
+                "append_text": " "
+            },
+            "pp-6.5": {
+                "label": "pp-6.5",
+                "description": "PP compiled for daint-mc",
+                "input_plugin": "quantumespresso.pp",
+                "on_computer": true,
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/QuantumESPRESSO/6.5-CrayIntel-20.08/bin/pp.x",
+                "computer": "daint-hybrid-s1005",
+                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO/6.5-CrayIntel-20.08\n",
+                "append_text": " "
+            },
+            "cp2k-8.1": {
+                "label": "cp2k-8.1",
+                "description": "CP2K compiled for daint-gpu",
+                "input_plugin": "cp2k",
+                "on_computer": true,
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/gpu/easybuild/software/CP2K/8.1-CrayGNU-20.08-cuda/bin/cp2k.psmp",
+                "computer": "daint-hybrid-s1005",
+                "prepend_text": "module load daint-gpu\nmodule load CP2K/8.1-CrayGNU-20.08-cuda\n",
+                "append_text": " "
+            },
+            "computer-configure": {
+                "safe_interval": 60,
+                "proxy_command": "ssh -q -Y put_your_username@ela.cscs.ch netcat ela.cscs.ch 22"
+            },
+            "computer-setup": {
+                "label": "daint-hybrid-s1005",
+                "hostname": "daint.cscs.ch",
+                "description": "Piz Daint supercomputer at CSCS Lugano, Switzerland, using the hybrid partition. Project s1005",
+                "transport": "ssh",
+                "scheduler": "slurm",
+                "shebang": "#!/bin/bash -l",
+                "mpiprocs_per_machine": 12,
+                "num_cores_per_mpiproc": 1,
+                "queue_name": "normal",
+                "work_dir": "/scratch/snx3000/{username}/aiida/",
+                "mpirun_command": "srun -n {tot_num_mpiprocs}",
+                "prepend_text": "#SBATCH --partition=normal\n#SBATCH --account=s1005\n#SBATCH --constraint=gpu\nexport OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}\nsource $MODULESHOME/init/bash\nexport CRAY_CUDA_MPS=1\nulimit -s unlimited\n"
+            }
+        },
         "default": "hybrid"
     },
     "paratera": {
         "tianhe-2": {
-            "computer-setup": {
-                "label": "paratera-th2",
-                "description": "TianHe-2 supercomputer provided by paratera",
-                "hostname": "119.90.38.52",
-                "transport": "ssh",
-                "scheduler": "slurm",
-                "shebang": "#!/usr/bin/env bash",
-                "work_dir": "/PARA/{username}/aiida",
-                "mpirun_command": "srun -n {tot_num_mpiprocs}",
-                "mpiprocs_per_machine": 24,
-                "prepend_text": "",
-                "append_text": ""
-            },
             "pw65@paratera-th2": {
                 "label": "pw6.5",
                 "description": "quantum_espresso v6.5",
@@ -438,8 +230,219 @@
                 "allow_agent": false,
                 "safe_interval": 60.0,
                 "use_login_shell": true
+            },
+            "computer-setup": {
+                "label": "paratera-th2",
+                "description": "TianHe-2 supercomputer provided by paratera",
+                "hostname": "119.90.38.52",
+                "transport": "ssh",
+                "scheduler": "slurm",
+                "shebang": "#!/usr/bin/env bash",
+                "work_dir": "/PARA/{username}/aiida",
+                "mpirun_command": "srun -n {tot_num_mpiprocs}",
+                "mpiprocs_per_machine": 24,
+                "prepend_text": "",
+                "append_text": ""
             }
         },
         "default": "tianhe-2"
+    },
+    "eiger.cscs.ch": {
+        "multicore-mr0-debug": {
+            "pw-6.7": {
+                "label": "pw-6.7",
+                "description": "QuantumESPRESSO 6.7.0 compiled by CSCS",
+                "input_plugin": "quantumespresso.pw",
+                "on_computer": true,
+                "remote_abs_path": "/apps/eiger/UES/jenkins/1.4.0/software/QuantumESPRESSO/6.7.0-cpeIntel-21.06/bin/pw.x",
+                "computer": "eiger-mc-mr0-debug",
+                "prepend_text": "module load cpeIntel/21.06\nmodule load QuantumESPRESSO/6.7.0\n",
+                "append_text": " "
+            },
+            "computer-configure": {
+                "safe_interval": 60,
+                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat ela.cscs.ch 22"
+            },
+            "computer-setup": {
+                "label": "eiger-mc-mr0-debug",
+                "hostname": "eiger.cscs.ch",
+                "description": "Eiger is the production partition on Alps, the HPE Cray EX Supercomputer.",
+                "transport": "ssh",
+                "scheduler": "slurm",
+                "work_dir": "/scratch/e1000/{username}/aiida/",
+                "shebang": "#!/bin/bash",
+                "mpirun_command": "srun -n {tot_num_mpiprocs}",
+                "mpiprocs_per_machine": 128,
+                "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=debug\n#SBATCH --account=mr0\n#SBATCH --constraint=mc\n#SBATCH --time=00:30:00\n\nexport OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}\nexport OMP_PROC_BIND=close\nexport OMP_PLACES=cores\n### computer prepend_text end ###\n",
+                "append_text": " "
+            }
+        },
+        "multicore-mr0": {
+            "pw-6.7": {
+                "label": "pw-6.7",
+                "description": "QuantumESPRESSO 6.7.0 compiled by CSCS",
+                "input_plugin": "quantumespresso.pw",
+                "on_computer": true,
+                "remote_abs_path": "/apps/eiger/UES/jenkins/1.4.0/software/QuantumESPRESSO/6.7.0-cpeIntel-21.06/bin/pw.x",
+                "computer": "eiger-mc-mr0",
+                "prepend_text": "module load cpeIntel/21.06\nmodule load QuantumESPRESSO/6.7.0\n",
+                "append_text": " "
+            },
+            "computer-configure": {
+                "safe_interval": 60,
+                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat ela.cscs.ch 22"
+            },
+            "computer-setup": {
+                "label": "eiger-mc-mr0",
+                "hostname": "eiger.cscs.ch",
+                "description": "Eiger is the production partition on Alps, the HPE Cray EX Supercomputer.",
+                "transport": "ssh",
+                "scheduler": "slurm",
+                "work_dir": "/scratch/e1000/{username}/aiida/",
+                "shebang": "#!/bin/bash",
+                "mpirun_command": "srun -n {tot_num_mpiprocs}",
+                "mpiprocs_per_machine": 128,
+                "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=normal\n#SBATCH --account=mr0\n#SBATCH --constraint=mc\n\nexport OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}\nexport OMP_PROC_BIND=close\nexport OMP_PLACES=cores\n### computer prepend_text end ###\n",
+                "append_text": " "
+            }
+        },
+        "default": "multicore-mr0"
+    },
+    "fidis.epfl.ch": {
+        "fidis-serial": {
+            "zeopp-46ce745": {
+                "label": "zeopp-46ce745",
+                "description": "Zeo++ cloned from https://github.com/mharanczyk/zeoplusplus",
+                "input_plugin": "zeopp.network",
+                "on_computer": true,
+                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/network_46ce745_ubu18",
+                "computer": "fidis-serial",
+                "prepend_text": " ",
+                "append_text": " "
+            },
+            "raspa-4467e14": {
+                "label": "raspa-4467e14",
+                "description": "RASPA2 cloned from https://github.com/iRASPA/RASPA2.git",
+                "input_plugin": "raspa",
+                "on_computer": true,
+                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/simulate_4467e14_fidis",
+                "computer": "fidis-serial",
+                "prepend_text": "export RASPA_DIR=/work/lsmo/aiida-lsmo-codes/data/raspa\nexport DYLD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\nexport LD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\n",
+                "append_text": " "
+            },
+            "computer-configure": {
+                "proxy_command": "ssh -q -Y put_your_username@lsmosrv1.epfl.ch netcat fidis.epfl.ch 22"
+            },
+            "computer-setup": {
+                "label": "fidis-serial",
+                "hostname": "fidis.epfl.ch",
+                "description": "Fidis EPFL computer using serial partition",
+                "transport": "ssh",
+                "scheduler": "slurm",
+                "work_dir": "/scratch/{username}/aiida_run/",
+                "shebang": "#!/bin/bash",
+                "mpirun_command": "srun -n {tot_num_mpiprocs}",
+                "mpiprocs_per_machine": 1,
+                "prepend_text": "#SBATCH --partition=serial",
+                "append_text": " "
+            }
+        },
+        "fidis": {
+            "cp2k-5.1": {
+                "label": "cp2k-5.1",
+                "description": "CP2K 5.1 compiled by SCITAS",
+                "input_plugin": "cp2k",
+                "on_computer": true,
+                "remote_abs_path": "/ssoft/spack/cornalin/v2/opt/spack/linux-rhel7-x86_E5v4_Mellanox/intel-17.0.2/cp2k-5.1-gke4ujsx5qhx6zt7ncfo22hajqhp6n6b/bin/cp2k.popt",
+                "computer": "fidis",
+                "prepend_text": "source /ssoft/spack/bin/slmodules.sh -r deprecated\nmodule load intel\nmodule load intel-mpi intel-mkl\nmodule load cp2k/5.1-mpi\nexport CP2K_DATA_DIR=/work/lsmo/aiida-lsmo-codes/data/cp2k/data\n",
+                "append_text": " "
+            },
+            "ddec-09_26_2017": {
+                "label": "ddec-09_26_2017",
+                "description": "chargemol_09_26_2017 precompiled linux/parallel binary from https://sourceforge.net/projects/ddec/files/",
+                "input_plugin": "ddec",
+                "on_computer": true,
+                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/chargemol_09_26_2017_ubu18",
+                "computer": "fidis",
+                "prepend_text": " ",
+                "append_text": " "
+            },
+            "computer-configure": {
+                "proxy_command": "ssh -q -Y put_your_username@lsmosrv1.epfl.ch netcat fidis.epfl.ch 22"
+            },
+            "computer-setup": {
+                "label": "fidis",
+                "hostname": "fidis.epfl.ch",
+                "description": "fidis EPFL computer",
+                "transport": "ssh",
+                "scheduler": "slurm",
+                "work_dir": "/scratch/{username}/aiida_run/",
+                "shebang": "#!/bin/bash",
+                "mpirun_command": "srun -n {tot_num_mpiprocs}",
+                "mpiprocs_per_machine": 28,
+                "prepend_text": " ",
+                "append_text": " "
+            }
+        },
+        "fidis-ch-315": {
+            "zeopp-46ce745": {
+                "label": "zeopp-46ce745",
+                "description": "Zeo++ cloned from https://github.com/mharanczyk/zeoplusplus",
+                "input_plugin": "zeopp.network",
+                "on_computer": true,
+                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/network_46ce745_ubu18",
+                "computer": "fidis-ch-315",
+                "prepend_text": " ",
+                "append_text": " "
+            },
+            "raspa-4467e14": {
+                "label": "raspa-4467e14",
+                "description": "RASPA2 cloned from https://github.com/iRASPA/RASPA2.git",
+                "input_plugin": "raspa",
+                "on_computer": true,
+                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/simulate_4467e14_fidis",
+                "computer": "fidis-ch-315",
+                "prepend_text": "export RASPA_DIR=/work/lsmo/aiida-lsmo-codes/data/raspa\nexport DYLD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\nexport LD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\n",
+                "append_text": " "
+            },
+            "cp2k-5.1": {
+                "label": "cp2k-5.1",
+                "description": "CP2K 5.1 compiled by SCITAS",
+                "input_plugin": "cp2k",
+                "on_computer": true,
+                "remote_abs_path": "/ssoft/spack/cornalin/v2/opt/spack/linux-rhel7-x86_E5v4_Mellanox/intel-17.0.2/cp2k-5.1-gke4ujsx5qhx6zt7ncfo22hajqhp6n6b/bin/cp2k.popt",
+                "computer": "fidis-ch-315",
+                "prepend_text": "source /ssoft/spack/bin/slmodules.sh -r deprecated\nmodule load intel\nmodule load intel-mpi intel-mkl\nmodule load cp2k/5.1-mpi\nexport CP2K_DATA_DIR=/work/lsmo/aiida-lsmo-codes/data/cp2k/data\n",
+                "append_text": " "
+            },
+            "ddec-09_26_2017": {
+                "label": "ddec-09_26_2017",
+                "description": "chargemol_09_26_2017 precompiled linux/parallel binary from https://sourceforge.net/projects/ddec/files/",
+                "input_plugin": "ddec",
+                "on_computer": true,
+                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/chargemol_09_26_2017_ubu18",
+                "computer": "fidis-ch-315",
+                "prepend_text": " ",
+                "append_text": " "
+            },
+            "computer-configure": {
+                "proxy_command": "ssh -q -Y put_your_username@lsmosrv1.epfl.ch netcat fidis.epfl.ch 22"
+            },
+            "computer-setup": {
+                "label": "fidis-ch-315",
+                "hostname": "fidis.epfl.ch",
+                "description": "fidis EPFL computer",
+                "transport": "ssh",
+                "scheduler": "slurm",
+                "work_dir": "/scratch/{username}/aiida_run/",
+                "shebang": "#!/bin/bash",
+                "mpirun_command": "srun -n {tot_num_mpiprocs}",
+                "mpiprocs_per_machine": 28,
+                "prepend_text": "#SBATCH --reservation=ch-315\n#SBATCH --account=ch-315\n#SBATCH --partition serial\n",
+                "append_text": " "
+            }
+        },
+        "default": "fidis"
     }
 }
