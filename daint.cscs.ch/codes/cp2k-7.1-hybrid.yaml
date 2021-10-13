@@ -1,4 +1,4 @@
-label: "cp2k-7.1-gpu"
+label: "cp2k-7.1"
 description: "CP2K compiled for daint-gpu"
 input_plugin: "cp2k"
 on_computer: true

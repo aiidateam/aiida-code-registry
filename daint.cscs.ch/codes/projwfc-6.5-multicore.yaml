@@ -1,4 +1,4 @@
-label: "projwfc-6.5-mc"
+label: "projwfc-6.5"
 description: "PROJWFC compiled for daint-mc"
 input_plugin: "quantumespresso.projwfc"
 on_computer: true

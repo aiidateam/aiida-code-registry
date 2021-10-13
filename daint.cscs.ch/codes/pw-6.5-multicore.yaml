@@ -1,4 +1,4 @@
-label: "pw-6.5-mc"
+label: "pw-6.5"
 description: "PW compiled for daint-mc"
 input_plugin: "quantumespresso.pw"
 on_computer: true

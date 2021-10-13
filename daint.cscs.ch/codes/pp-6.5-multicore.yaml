@@ -1,4 +1,4 @@
-label: "pp-6.5-mc"
+label: "pp-6.5"
 description: "PP compiled for daint-mc"
 input_plugin: "quantumespresso.pp"
 on_computer: true
