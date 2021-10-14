@@ -2,28 +2,49 @@
 
 **THIS IS WORK IN PROGRESS - PULL REQUESTS & [SUGGESTIONS](https://github.com/aiidateam/aiida-code-registry/issues) HIGHLY WELCOME**
 
-This repository collects configurations of simulation codes on public compute resources for direct setup in AiiDA.
+This repository collects configurations of simulation codes on public compute resources for quick and easy setup in AiiDA.
 
-## Importing computers into AiiDA
+## Using the AiiDA code registry
 
-```
-verdi computer setup --config https:///..../computer-setup.yaml
-```
+In the following we'll take the example of [Piz Daint](https://www.cscs.ch/computers/piz-daint/), a HPC system at the Swiss National Supercomputing Centre.
 
-Some computers also require specific configuration options and provide a specific `computer-configure.yaml` file:
+### `verdi computer setup` 
 
-```
-verdi computer configure ssh <computer-name> --config https:///..../computer-configure.yaml
-```
+ 1. Navigate to the [`daint.cscs.ch`](./daint.cscs.ch) folder in the GitHub web interface
+ 2. Select the partition you would like to run on, for example [`hybrid`](./daint.cscs.ch/hybrid)
+ 3. Click on the `computer-setup.yaml` file and click on the "Raw" button to get a direct link to the file
 
-Note: Some computers may need to be accessed via a proxy - e.g., for Piz Daint: 
+Now use this link to set up the computer directly via the `verdi` command line:
 ```
-proxy_command: ssh <username>@ela.cscs.ch netcat daint.cscs.ch 22
+verdi computer setup --config https://raw.githubusercontent.com/aiidateam/aiida-code-registry/master/daint.cscs.ch/hybrid/computer-setup.yaml
 ```
 
-## Importing codes into AiiDA
+Note: Alternatively, you can first create a local clone of the `aiida-code-registry` and set up the computer from there.
+This allows you to edit the configuration files in case you need to adapt anything.
+
+### `verdi computer configure` 
+
+Some computers require specific configuration options (e.g. to jump over a login node) and provide a dedicated `computer-configure.yaml` file.
+
+You'll find it in the same folder:
+
 ```
-verdi code setup --config https://.../code.yaml
+verdi computer configure ssh daint-hybrid --config https://raw.githubusercontent.com/aiidateam/aiida-code-registry/master/daint.cscs.ch/hybrid/computer-configure.yaml
+```
+
+At this point, you should be able to successfully run:
+```
+verdi computer test daint-hybrid
+```
+
+### `verdi code setup` 
+
+The [`daint.cscs.ch`](./daint.cscs.ch/) folder contains a [`codes`](./daint.cscs.ch/codes) subfolder with configuration files for individual codes.
+
+Just pick the ones you need and set them up:
+
+```
+verdi code setup --config https://raw.githubusercontent.com/aiidateam/aiida-code-registry/master/daint.cscs.ch/codes/cp2k-8.1-hybrid.yaml
 ```
 
 ## Contributing to this repository
