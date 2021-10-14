@@ -18,9 +18,8 @@ Now use this link to set up the computer directly via the `verdi` command line:
 ```
 verdi computer setup --config https://raw.githubusercontent.com/aiidateam/aiida-code-registry/master/daint.cscs.ch/hybrid/computer-setup.yaml
 ```
-You will be prompted for the computer label (in the following we'll assume you named it `daint-hybrid`).
 
-You can overwrite any of the parameters provided in the yaml file by appending the corresponding option to the command, e.g. `--queue_name debug`.
+You can overwrite any of the parameters provided in the yaml file by appending the corresponding option to the command, e.g. `--label my-computer-label` to overwrite the default computer label `daint-hybrid`.
 
 Note: Alternatively, you can first create a local clone of the `aiida-code-registry` and pass the the local file path of the yaml file to the `--config` option.
 
@@ -48,6 +47,8 @@ Just pick the ones you need and set them up:
 ```
 verdi code setup --config https://raw.githubusercontent.com/aiidateam/aiida-code-registry/master/daint.cscs.ch/codes/cp2k-8.1-hybrid.yaml
 ```
+
+Note: You will be prompted for the computer label (which you can avoid by appending `--computer daint-hybrid` to the command).
 
 ## Contributing to this repository
 
