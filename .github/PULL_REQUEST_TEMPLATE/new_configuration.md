@@ -1,5 +1,5 @@
 ---
-name: New configuration 
+name: New configuration
 about: Add a new computer/code configuration
 title: 'New configuration for'
 labels: new configuration
@@ -21,7 +21,7 @@ Please provide below the output of `verdi computer test <computername>` for each
 ### New codes added
 
 Checks:
- - The codes are maintained 
+ - The codes are maintained
    - [ ] by the admins of the HPC center
    - [ ] by me
  - [ ] I have verified that the paths to the executables are correct

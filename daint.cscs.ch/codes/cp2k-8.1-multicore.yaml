@@ -1,3 +1,4 @@
+---
 label: "cp2k-8.1"
 description: "CP2K 8.1 compiled by CSCS"
 input_plugin: "cp2k"

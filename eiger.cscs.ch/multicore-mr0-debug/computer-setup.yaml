@@ -1,3 +1,4 @@
+---
 label: "eiger-mc-mr0-debug"
 hostname: "eiger.cscs.ch"
 description: Eiger is the production partition on Alps, the HPE Cray EX Supercomputer.

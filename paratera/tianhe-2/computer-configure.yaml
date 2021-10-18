@@ -1,5 +1,5 @@
 ---
-port:   2200
-allow_agent:            False
-safe_interval:          60.0
-use_login_shell: True
+port: 2200
+allow_agent: false
+safe_interval: 60.0
+use_login_shell: true

@@ -8,7 +8,7 @@ from pathlib import Path
 folder_path = Path(__file__).parent.absolute()
 library_path = folder_path.parent
 
-# Extract all the data. 
+# Extract all the data.
 
 YAML_SUFFIX = '.yaml'
 
@@ -25,17 +25,17 @@ def parse_yaml_files_in_folder(folder_path, exclude=None):
         file_list = [ fname for fname in os.listdir(folder_path) if fname not in exclude ]
     else:
         file_list = os.listdir(folder_path)
-    
+
     for fname in file_list:
         with open(folder_path/fname) as yaml_file:
             if fname.endswith(YAML_SUFFIX):
                 fname = fname[:-len(YAML_SUFFIX)]
             else:
                 raise ValueError(f"The file {fname} has unsupported extension. Please use '{YAML_SUFFIX}'")
-            
+
             result[fname] = yaml.load(yaml_file, Loader=yaml.FullLoader)
 
-    return result 
+    return result
 
 
 # Loop over the available domains and extract the computes available under them.

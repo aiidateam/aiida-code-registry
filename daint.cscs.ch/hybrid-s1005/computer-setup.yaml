@@ -1,3 +1,4 @@
+---
 label: "daint-hybrid-s1005"
 hostname: "daint.cscs.ch"
 description: "Piz Daint supercomputer at CSCS Lugano, Switzerland, using the hybrid partition. Project s1005"

@@ -1,3 +1,4 @@
+---
 label: "fidis-serial"
 hostname: "fidis.epfl.ch"
 description: Fidis EPFL computer using serial partition
