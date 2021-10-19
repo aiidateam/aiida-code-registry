@@ -8,7 +8,7 @@ This repository collects configurations of simulation codes on public compute re
 
 In the following we'll take the example of [Piz Daint](https://www.cscs.ch/computers/piz-daint/), a HPC system at the Swiss National Supercomputing Centre.
 
-### `verdi computer setup` 
+### `verdi computer setup`
 
  1. Navigate to the [`daint.cscs.ch`](./daint.cscs.ch) folder in the GitHub web interface
  2. Select the partition you would like to run on, for example [`hybrid`](./daint.cscs.ch/hybrid)
@@ -23,7 +23,7 @@ You can overwrite any of the parameters provided in the yaml file by appending t
 
 Note: Alternatively, you can first create a local clone of the `aiida-code-registry` and pass the the local file path of the yaml file to the `--config` option.
 
-### `verdi computer configure` 
+### `verdi computer configure`
 
 Some computers require specific configuration options (e.g. to jump over a login node) and provide a dedicated `computer-configure.yaml` file.
 
@@ -38,7 +38,7 @@ At this point, you should be able to successfully run:
 verdi computer test daint-hybrid
 ```
 
-### `verdi code setup` 
+### `verdi code setup`
 
 The [`daint.cscs.ch`](./daint.cscs.ch/) folder contains a [`codes`](./daint.cscs.ch/codes) subfolder with configuration files for individual codes.
 
