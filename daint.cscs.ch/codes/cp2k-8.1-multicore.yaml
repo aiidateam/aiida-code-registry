@@ -3,9 +3,8 @@ label: "cp2k-8.1"
 description: "CP2K 8.1 compiled by CSCS"
 input_plugin: "cp2k"
 on_computer: true
-remote_abs_path: "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/CP2K/8.1-CrayGNU-20.08/bin/cp2k.psmp"
+remote_abs_path: "/apps/daint/UES/jenkins/7.0.UP02-20.11/mc/easybuild/software/CP2K/8.1-CrayGNU-20.11/bin/cp2k.psmp"
 prepend_text: |
-  ###  code prepend_text start ###
-  module load CP2K/8.1-CrayGNU-20.08
-  ###  code prepend_text end ###
+  module load daint-mc
+  module load CP2K/8.1-CrayGNU-20.11
 append_text: " "
