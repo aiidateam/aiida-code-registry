@@ -37,22 +37,13 @@
                 "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO/6.5-CrayIntel-20.08\n",
                 "append_text": " "
             },
-            "cp2k-6.1-multicore": {
-                "label": "cp2k-6.1",
-                "description": "CP2K 6.1 compiled by CSCS",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP01/mc/easybuild/software/CP2K/6.1-CrayGNU-19.10/bin/cp2k.psmp",
-                "prepend_text": "###  code prepend_text start ###\nmodule load CP2K\n###  code prepend_text end ###\n",
-                "append_text": " "
-            },
             "cp2k-8.1-hybrid": {
                 "label": "cp2k-8.1",
                 "description": "CP2K compiled for daint-gpu",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/gpu/easybuild/software/CP2K/8.1-CrayGNU-20.08-cuda/bin/cp2k.psmp",
-                "prepend_text": "module load daint-gpu\nmodule load CP2K/8.1-CrayGNU-20.08-cuda\n",
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02-20.11/gpu/easybuild/software/CP2K/8.1-CrayGNU-20.11-cuda/bin/cp2k.psmp",
+                "prepend_text": "module load daint-gpu\nmodule load CP2K/8.1-CrayGNU-20.11-cuda\n",
                 "append_text": " "
             },
             "cp2k-8.1-multicore": {
@@ -60,8 +51,8 @@
                 "description": "CP2K 8.1 compiled by CSCS",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/CP2K/8.1-CrayGNU-20.08/bin/cp2k.psmp",
-                "prepend_text": "###  code prepend_text start ###\nmodule load CP2K/8.1-CrayGNU-20.08\n###  code prepend_text end ###\n",
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02-20.11/mc/easybuild/software/CP2K/8.1-CrayGNU-20.11/bin/cp2k.psmp",
+                "prepend_text": "module load daint-mc\nmodule load CP2K/8.1-CrayGNU-20.11\n",
                 "append_text": " "
             },
             "cp2k-7.1-multicore": {
@@ -69,8 +60,8 @@
                 "description": "CP2K 7.1 compiled by CSCS",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/CP2K/7.1-CrayGNU-20.08/bin/cp2k.psmp",
-                "prepend_text": "###  code prepend_text start ###\nmodule load intel\nmodule load CP2K/7.1-CrayGNU-20.08\n###  code prepend_text end ###\n",
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02-20.11/mc/easybuild/software/CP2K/7.1-CrayGNU-20.11/bin/cp2k.psmp",
+                "prepend_text": "module load daint-mc\nmodule load CP2K/7.1-CrayGNU-20.11\n",
                 "append_text": " "
             },
             "cp2k-7.1-hybrid": {
@@ -78,17 +69,8 @@
                 "description": "CP2K compiled for daint-gpu",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/gpu/easybuild/software/CP2K/7.1-CrayGNU-20.08-cuda/bin/cp2k.psmp",
-                "prepend_text": "module load daint-gpu\nmodule load CP2K/7.1-CrayGNU-20.08-cuda\n",
-                "append_text": " "
-            },
-            "cp2k-6.1-hybrid": {
-                "label": "cp2k-6.1",
-                "description": "CP2K with CUDA on daint, compiled by CSCS",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP01/gpu/easybuild/software/CP2K/6.1-CrayGNU-19.10-cuda-10.1/bin/cp2k.psmp",
-                "prepend_text": "###  code prepend_text start ###\nmodule load CP2K\n###  code prepend_text end ###\n",
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02-20.11/gpu/easybuild/software/CP2K/7.1-CrayGNU-20.11-cuda/bin/cp2k.psmp",
+                "prepend_text": "module load daint-gpu\nmodule load CP2K/7.1-CrayGNU-20.11-cuda\n",
                 "append_text": " "
             },
             "projwfc-6.5-multicore": {
@@ -116,7 +98,7 @@
                 "shebang": "#!/bin/bash",
                 "mpirun_command": "srun -n {tot_num_mpiprocs}",
                 "mpiprocs_per_machine": 36,
-                "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=normal\n#SBATCH --constraint=mc\n#SBATCH --cpus-per-task=1\nexport OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK\nsource $MODULESHOME/init/bash\nmodule load daint-mc\nulimit -s unlimited\n### computer prepend_text end ###\n",
+                "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=normal\n#SBATCH --constraint=mc\n#SBATCH --cpus-per-task=1\nexport OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK\nsource $MODULESHOME/init/bash\nulimit -s unlimited\n### computer prepend_text end ###\n",
                 "append_text": " "
             },
             "pp-6.5-multicore": {
@@ -137,22 +119,13 @@
                 "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO/6.5-CrayIntel-20.08\n",
                 "append_text": " "
             },
-            "cp2k-6.1-multicore": {
-                "label": "cp2k-6.1",
-                "description": "CP2K 6.1 compiled by CSCS",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP01/mc/easybuild/software/CP2K/6.1-CrayGNU-19.10/bin/cp2k.psmp",
-                "prepend_text": "###  code prepend_text start ###\nmodule load CP2K\n###  code prepend_text end ###\n",
-                "append_text": " "
-            },
             "cp2k-8.1-hybrid": {
                 "label": "cp2k-8.1",
                 "description": "CP2K compiled for daint-gpu",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/gpu/easybuild/software/CP2K/8.1-CrayGNU-20.08-cuda/bin/cp2k.psmp",
-                "prepend_text": "module load daint-gpu\nmodule load CP2K/8.1-CrayGNU-20.08-cuda\n",
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02-20.11/gpu/easybuild/software/CP2K/8.1-CrayGNU-20.11-cuda/bin/cp2k.psmp",
+                "prepend_text": "module load daint-gpu\nmodule load CP2K/8.1-CrayGNU-20.11-cuda\n",
                 "append_text": " "
             },
             "cp2k-8.1-multicore": {
@@ -160,8 +133,8 @@
                 "description": "CP2K 8.1 compiled by CSCS",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/CP2K/8.1-CrayGNU-20.08/bin/cp2k.psmp",
-                "prepend_text": "###  code prepend_text start ###\nmodule load CP2K/8.1-CrayGNU-20.08\n###  code prepend_text end ###\n",
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02-20.11/mc/easybuild/software/CP2K/8.1-CrayGNU-20.11/bin/cp2k.psmp",
+                "prepend_text": "module load daint-mc\nmodule load CP2K/8.1-CrayGNU-20.11\n",
                 "append_text": " "
             },
             "cp2k-7.1-multicore": {
@@ -169,8 +142,8 @@
                 "description": "CP2K 7.1 compiled by CSCS",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/CP2K/7.1-CrayGNU-20.08/bin/cp2k.psmp",
-                "prepend_text": "###  code prepend_text start ###\nmodule load intel\nmodule load CP2K/7.1-CrayGNU-20.08\n###  code prepend_text end ###\n",
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02-20.11/mc/easybuild/software/CP2K/7.1-CrayGNU-20.11/bin/cp2k.psmp",
+                "prepend_text": "module load daint-mc\nmodule load CP2K/7.1-CrayGNU-20.11\n",
                 "append_text": " "
             },
             "cp2k-7.1-hybrid": {
@@ -178,17 +151,8 @@
                 "description": "CP2K compiled for daint-gpu",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/gpu/easybuild/software/CP2K/7.1-CrayGNU-20.08-cuda/bin/cp2k.psmp",
-                "prepend_text": "module load daint-gpu\nmodule load CP2K/7.1-CrayGNU-20.08-cuda\n",
-                "append_text": " "
-            },
-            "cp2k-6.1-hybrid": {
-                "label": "cp2k-6.1",
-                "description": "CP2K with CUDA on daint, compiled by CSCS",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP01/gpu/easybuild/software/CP2K/6.1-CrayGNU-19.10-cuda-10.1/bin/cp2k.psmp",
-                "prepend_text": "###  code prepend_text start ###\nmodule load CP2K\n###  code prepend_text end ###\n",
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02-20.11/gpu/easybuild/software/CP2K/7.1-CrayGNU-20.11-cuda/bin/cp2k.psmp",
+                "prepend_text": "module load daint-gpu\nmodule load CP2K/7.1-CrayGNU-20.11-cuda\n",
                 "append_text": " "
             },
             "projwfc-6.5-multicore": {
@@ -218,7 +182,7 @@
                 "queue_name": "normal",
                 "work_dir": "/scratch/snx3000/{username}/aiida/",
                 "mpirun_command": "srun -n {tot_num_mpiprocs}",
-                "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=normal\n#SBATCH --constraint=gpu\n#SBATCH --hint=nomultithread\nexport OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK\nexport CRAY_CUDA_MPS=1\nulimit -s unlimited\nmodule load daint-gpu\n### computer prepend_text end ###\n"
+                "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=normal\n#SBATCH --constraint=gpu\n#SBATCH --hint=nomultithread\nexport OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK\nexport CRAY_CUDA_MPS=1\nulimit -s unlimited\n### computer prepend_text end ###\n"
             },
             "pp-6.5-multicore": {
                 "label": "pp-6.5",
@@ -238,22 +202,13 @@
                 "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO/6.5-CrayIntel-20.08\n",
                 "append_text": " "
             },
-            "cp2k-6.1-multicore": {
-                "label": "cp2k-6.1",
-                "description": "CP2K 6.1 compiled by CSCS",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP01/mc/easybuild/software/CP2K/6.1-CrayGNU-19.10/bin/cp2k.psmp",
-                "prepend_text": "###  code prepend_text start ###\nmodule load CP2K\n###  code prepend_text end ###\n",
-                "append_text": " "
-            },
             "cp2k-8.1-hybrid": {
                 "label": "cp2k-8.1",
                 "description": "CP2K compiled for daint-gpu",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/gpu/easybuild/software/CP2K/8.1-CrayGNU-20.08-cuda/bin/cp2k.psmp",
-                "prepend_text": "module load daint-gpu\nmodule load CP2K/8.1-CrayGNU-20.08-cuda\n",
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02-20.11/gpu/easybuild/software/CP2K/8.1-CrayGNU-20.11-cuda/bin/cp2k.psmp",
+                "prepend_text": "module load daint-gpu\nmodule load CP2K/8.1-CrayGNU-20.11-cuda\n",
                 "append_text": " "
             },
             "cp2k-8.1-multicore": {
@@ -261,8 +216,8 @@
                 "description": "CP2K 8.1 compiled by CSCS",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/CP2K/8.1-CrayGNU-20.08/bin/cp2k.psmp",
-                "prepend_text": "###  code prepend_text start ###\nmodule load CP2K/8.1-CrayGNU-20.08\n###  code prepend_text end ###\n",
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02-20.11/mc/easybuild/software/CP2K/8.1-CrayGNU-20.11/bin/cp2k.psmp",
+                "prepend_text": "module load daint-mc\nmodule load CP2K/8.1-CrayGNU-20.11\n",
                 "append_text": " "
             },
             "cp2k-7.1-multicore": {
@@ -270,8 +225,8 @@
                 "description": "CP2K 7.1 compiled by CSCS",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/CP2K/7.1-CrayGNU-20.08/bin/cp2k.psmp",
-                "prepend_text": "###  code prepend_text start ###\nmodule load intel\nmodule load CP2K/7.1-CrayGNU-20.08\n###  code prepend_text end ###\n",
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02-20.11/mc/easybuild/software/CP2K/7.1-CrayGNU-20.11/bin/cp2k.psmp",
+                "prepend_text": "module load daint-mc\nmodule load CP2K/7.1-CrayGNU-20.11\n",
                 "append_text": " "
             },
             "cp2k-7.1-hybrid": {
@@ -279,17 +234,8 @@
                 "description": "CP2K compiled for daint-gpu",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/gpu/easybuild/software/CP2K/7.1-CrayGNU-20.08-cuda/bin/cp2k.psmp",
-                "prepend_text": "module load daint-gpu\nmodule load CP2K/7.1-CrayGNU-20.08-cuda\n",
-                "append_text": " "
-            },
-            "cp2k-6.1-hybrid": {
-                "label": "cp2k-6.1",
-                "description": "CP2K with CUDA on daint, compiled by CSCS",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP01/gpu/easybuild/software/CP2K/6.1-CrayGNU-19.10-cuda-10.1/bin/cp2k.psmp",
-                "prepend_text": "###  code prepend_text start ###\nmodule load CP2K\n###  code prepend_text end ###\n",
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02-20.11/gpu/easybuild/software/CP2K/7.1-CrayGNU-20.11-cuda/bin/cp2k.psmp",
+                "prepend_text": "module load daint-gpu\nmodule load CP2K/7.1-CrayGNU-20.11-cuda\n",
                 "append_text": " "
             },
             "projwfc-6.5-multicore": {
@@ -339,22 +285,13 @@
                 "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO/6.5-CrayIntel-20.08\n",
                 "append_text": " "
             },
-            "cp2k-6.1-multicore": {
-                "label": "cp2k-6.1",
-                "description": "CP2K 6.1 compiled by CSCS",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP01/mc/easybuild/software/CP2K/6.1-CrayGNU-19.10/bin/cp2k.psmp",
-                "prepend_text": "###  code prepend_text start ###\nmodule load CP2K\n###  code prepend_text end ###\n",
-                "append_text": " "
-            },
             "cp2k-8.1-hybrid": {
                 "label": "cp2k-8.1",
                 "description": "CP2K compiled for daint-gpu",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/gpu/easybuild/software/CP2K/8.1-CrayGNU-20.08-cuda/bin/cp2k.psmp",
-                "prepend_text": "module load daint-gpu\nmodule load CP2K/8.1-CrayGNU-20.08-cuda\n",
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02-20.11/gpu/easybuild/software/CP2K/8.1-CrayGNU-20.11-cuda/bin/cp2k.psmp",
+                "prepend_text": "module load daint-gpu\nmodule load CP2K/8.1-CrayGNU-20.11-cuda\n",
                 "append_text": " "
             },
             "cp2k-8.1-multicore": {
@@ -362,8 +299,8 @@
                 "description": "CP2K 8.1 compiled by CSCS",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/CP2K/8.1-CrayGNU-20.08/bin/cp2k.psmp",
-                "prepend_text": "###  code prepend_text start ###\nmodule load CP2K/8.1-CrayGNU-20.08\n###  code prepend_text end ###\n",
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02-20.11/mc/easybuild/software/CP2K/8.1-CrayGNU-20.11/bin/cp2k.psmp",
+                "prepend_text": "module load daint-mc\nmodule load CP2K/8.1-CrayGNU-20.11\n",
                 "append_text": " "
             },
             "cp2k-7.1-multicore": {
@@ -371,8 +308,8 @@
                 "description": "CP2K 7.1 compiled by CSCS",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/mc/easybuild/software/CP2K/7.1-CrayGNU-20.08/bin/cp2k.psmp",
-                "prepend_text": "###  code prepend_text start ###\nmodule load intel\nmodule load CP2K/7.1-CrayGNU-20.08\n###  code prepend_text end ###\n",
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02-20.11/mc/easybuild/software/CP2K/7.1-CrayGNU-20.11/bin/cp2k.psmp",
+                "prepend_text": "module load daint-mc\nmodule load CP2K/7.1-CrayGNU-20.11\n",
                 "append_text": " "
             },
             "cp2k-7.1-hybrid": {
@@ -380,17 +317,8 @@
                 "description": "CP2K compiled for daint-gpu",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02/gpu/easybuild/software/CP2K/7.1-CrayGNU-20.08-cuda/bin/cp2k.psmp",
-                "prepend_text": "module load daint-gpu\nmodule load CP2K/7.1-CrayGNU-20.08-cuda\n",
-                "append_text": " "
-            },
-            "cp2k-6.1-hybrid": {
-                "label": "cp2k-6.1",
-                "description": "CP2K with CUDA on daint, compiled by CSCS",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP01/gpu/easybuild/software/CP2K/6.1-CrayGNU-19.10-cuda-10.1/bin/cp2k.psmp",
-                "prepend_text": "###  code prepend_text start ###\nmodule load CP2K\n###  code prepend_text end ###\n",
+                "remote_abs_path": "/apps/daint/UES/jenkins/7.0.UP02-20.11/gpu/easybuild/software/CP2K/7.1-CrayGNU-20.11-cuda/bin/cp2k.psmp",
+                "prepend_text": "module load daint-gpu\nmodule load CP2K/7.1-CrayGNU-20.11-cuda\n",
                 "append_text": " "
             },
             "projwfc-6.5-multicore": {
