@@ -382,16 +382,16 @@
                 "shebang": "#!/bin/bash",
                 "mpirun_command": "srun -n {tot_num_mpiprocs}",
                 "mpiprocs_per_machine": 128,
-                "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=debug\n#SBATCH --account=mr0\n#SBATCH --constraint=mc\n#SBATCH --time=00:30:00\n\nexport OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}\nexport OMP_PROC_BIND=close\nexport OMP_PLACES=cores\n### computer prepend_text end ###\n",
+                "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=debug\n#SBATCH --account=mr0\n#SBATCH --constraint=mc\n#SBATCH --hint=nomultithread\n#SBATCH --time=00:30:00\n\nexport OMP_PROC_BIND=close\nexport OMP_PLACES=cores\n### computer prepend_text end ###\n",
                 "append_text": " "
             },
-            "pw-6.7-multicore": {
-                "label": "pw-6.7",
-                "description": "QuantumESPRESSO 6.7.0 compiled by CSCS",
+            "pw-6.8-multicore": {
+                "label": "pw-6.8",
+                "description": "QuantumESPRESSO 6.8.0 compiled by CSCS",
                 "input_plugin": "quantumespresso.pw",
                 "on_computer": true,
-                "remote_abs_path": "/apps/eiger/UES/jenkins/1.4.0/software/QuantumESPRESSO/6.7.0-cpeIntel-21.06/bin/pw.x",
-                "prepend_text": "module load cpeIntel/21.06\nmodule load QuantumESPRESSO/6.7.0\n",
+                "remote_abs_path": "/apps/eiger/UES/jenkins/1.4.0/software/QuantumESPRESSO/6.8.0-cpeIntel-21.08/bin/pw.x",
+                "prepend_text": "export OMP_NUM_THREADS=1\nmodule load cpeIntel\nmodule load QuantumESPRESSO/6.8.0\n",
                 "append_text": " "
             }
         },
@@ -410,16 +410,16 @@
                 "shebang": "#!/bin/bash",
                 "mpirun_command": "srun -n {tot_num_mpiprocs}",
                 "mpiprocs_per_machine": 128,
-                "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=normal\n#SBATCH --account=mr0\n#SBATCH --constraint=mc\n\nexport OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}\nexport OMP_PROC_BIND=close\nexport OMP_PLACES=cores\n### computer prepend_text end ###\n",
+                "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=normal\n#SBATCH --account=mr0\n#SBATCH --constraint=mc\n#SBATCH --hint=nomultithread\n\nexport OMP_PROC_BIND=close\nexport OMP_PLACES=cores\n### computer prepend_text end ###\n",
                 "append_text": " "
             },
-            "pw-6.7-multicore": {
-                "label": "pw-6.7",
-                "description": "QuantumESPRESSO 6.7.0 compiled by CSCS",
+            "pw-6.8-multicore": {
+                "label": "pw-6.8",
+                "description": "QuantumESPRESSO 6.8.0 compiled by CSCS",
                 "input_plugin": "quantumespresso.pw",
                 "on_computer": true,
-                "remote_abs_path": "/apps/eiger/UES/jenkins/1.4.0/software/QuantumESPRESSO/6.7.0-cpeIntel-21.06/bin/pw.x",
-                "prepend_text": "module load cpeIntel/21.06\nmodule load QuantumESPRESSO/6.7.0\n",
+                "remote_abs_path": "/apps/eiger/UES/jenkins/1.4.0/software/QuantumESPRESSO/6.8.0-cpeIntel-21.08/bin/pw.x",
+                "prepend_text": "export OMP_NUM_THREADS=1\nmodule load cpeIntel\nmodule load QuantumESPRESSO/6.8.0\n",
                 "append_text": " "
             }
         },
