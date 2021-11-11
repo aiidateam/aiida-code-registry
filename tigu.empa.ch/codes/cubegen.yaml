@@ -1,0 +1,8 @@
+---
+label: cubegen
+description: Cubegen utility from Gaussian 16 package.
+input_plugin: gaussian.cubegen
+on_computer: true
+remote_abs_path: /opt/g16_avx2/cubegen
+prepend_text: " "
+append_text: " "
