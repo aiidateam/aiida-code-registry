@@ -1,2 +1,3 @@
 ---
-proxy_command: "ssh -q -Y put_your_username@lsmosrv1.epfl.ch netcat fidis.epfl.ch 22"
+save_interval: 10
+proxy_command: "ssh -q -Y put_your_username@lsmosrv3.epfl.ch netcat fidis.epfl.ch 22"
