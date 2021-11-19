@@ -1,0 +1,11 @@
+---
+label: "raspa-4467e14-CH-315"
+description: "RASPA2 cloned from https://github.com/iRASPA/RASPA2.git"
+input_plugin: "raspa"
+on_computer: true
+remote_abs_path: "/home/kjablonk/aiida-lsmo-codes/bin/simulate_4467e14_fidis"
+prepend_text: |
+  export RASPA_DIR=/home/kjablonk/aiida-lsmo-codes/data/raspa
+  export DYLD_LIBRARY_PATH=/home/kjablonk/aiida-lsmo-codes/lib/raspa_4467e14_fidis
+  export LD_LIBRARY_PATH=/home/kjablonk/aiida-lsmo-codes/lib/raspa_4467e14_fidis
+append_text: " "
