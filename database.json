@@ -3,7 +3,7 @@
         "hybrid-s1005": {
             "computer-configure": {
                 "safe_interval": 60,
-                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat ela.cscs.ch 22"
+                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat daint.cscs.ch 22"
             },
             "computer-setup": {
                 "label": "daint-hybrid-s1005",
@@ -86,7 +86,7 @@
         "multicore": {
             "computer-configure": {
                 "safe_interval": 60,
-                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat ela.cscs.ch 22"
+                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat daint.cscs.ch 22"
             },
             "computer-setup": {
                 "label": "daint-mc",
@@ -168,7 +168,7 @@
         "hybrid-s904": {
             "computer-configure": {
                 "safe_interval": 60,
-                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat ela.cscs.ch 22"
+                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat daint.cscs.ch 22"
             },
             "computer-setup": {
                 "label": "daint-hybrid-s904",
@@ -251,7 +251,7 @@
         "hybrid": {
             "computer-configure": {
                 "safe_interval": 60,
-                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat ela.cscs.ch 22"
+                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat daint.cscs.ch 22"
             },
             "computer-setup": {
                 "label": "daint-hybrid",
