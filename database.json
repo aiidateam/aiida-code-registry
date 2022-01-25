@@ -337,7 +337,7 @@
         "multicore-mr0-debug": {
             "computer-configure": {
                 "safe_interval": 60,
-                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat ela.cscs.ch 22"
+                "proxy_jump": "{username}@ela.cscs.ch"
             },
             "computer-setup": {
                 "label": "eiger-mc-mr0-debug",
@@ -383,7 +383,7 @@
         "multicore-mr0": {
             "computer-configure": {
                 "safe_interval": 60,
-                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat ela.cscs.ch 22"
+                "proxy_jump": "{username}@ela.cscs.ch"
             },
             "computer-setup": {
                 "label": "eiger-mc-mr0",
