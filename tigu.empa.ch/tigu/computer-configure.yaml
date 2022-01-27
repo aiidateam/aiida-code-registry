@@ -1,3 +1,3 @@
 ---
 safe_interval: 30.0
-proxy_command: ssh -W 10.128.1.11:22 -oProxyCommand="ssh -o 'ForwardAgent yes' yaa@ela.cscs.ch 'ssh-add -t 5 && nc jump1.empa.ch 22'" yaa@jump1.empa.ch
+proxy_jump: "{username}@ela.cscs.ch,{username}@jump1.empa.ch"
