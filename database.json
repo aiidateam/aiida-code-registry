@@ -428,6 +428,173 @@
         },
         "default": "multicore-mr0"
     },
+    "tigu.empa.ch": {
+        "tigu-mpirun": {
+            "computer-configure": {
+                "safe_interval": 30.0,
+                "proxy_jump": "{username}@ela.cscs.ch,{username}@jump1.empa.ch"
+            },
+            "computer-setup": {
+                "label": "tigu-mpirun",
+                "hostname": "10.128.1.11",
+                "description": "Tigu computer at Empa.",
+                "transport": "ssh",
+                "scheduler": "slurm",
+                "shebang": "#!/bin/bash -l",
+                "mpiprocs_per_machine": 4,
+                "queue_name": "normal",
+                "work_dir": "/scratch/{username}/aiida/",
+                "mpirun_command": "mpirun -np {tot_num_mpiprocs}",
+                "prepend_text": "export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}\nulimit -s unlimited\n"
+            },
+            "cp2k-8.1": {
+                "label": "cp2k-8.1",
+                "description": "CP2K version 8.1.",
+                "input_plugin": "cp2k",
+                "on_computer": true,
+                "remote_abs_path": "/home/eimk/.local/easybuild/software/CP2K/8.1-foss-2020b/bin/cp2k.psmp",
+                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load CP2K/8.1-foss-2020b\nexport CP2K_DATA_DIR=\"/home/eimk/.local/easybuild/software/CP2K/8.1-foss-2020b/data\"\n",
+                "append_text": " "
+            },
+            "gaussian-16": {
+                "label": "gaussian-16",
+                "description": "Gaussian 16",
+                "input_plugin": "gaussian",
+                "on_computer": true,
+                "remote_abs_path": "/opt/g16_avx2/g16",
+                "prepend_text": " ",
+                "append_text": " "
+            },
+            "projwfc-6.7": {
+                "label": "projwfc-6.7",
+                "description": "Quantum ESPRESSO projwfc.x",
+                "input_plugin": "quantumespresso.projwfc",
+                "on_computer": true,
+                "remote_abs_path": "/home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/projwfc.x",
+                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load QuantumESPRESSO/6.7-foss-2020b\n",
+                "append_text": " "
+            },
+            "cubegen": {
+                "label": "cubegen",
+                "description": "Cubegen utility from Gaussian 16 package.",
+                "input_plugin": "gaussian.cubegen",
+                "on_computer": true,
+                "remote_abs_path": "/opt/g16_avx2/cubegen",
+                "prepend_text": " ",
+                "append_text": " "
+            },
+            "pw-6.7": {
+                "label": "pw-6.7",
+                "description": "Quantum ESPRESSO pw.x",
+                "input_plugin": "quantumespresso.pw",
+                "on_computer": true,
+                "remote_abs_path": "/home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/pw.x",
+                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load QuantumESPRESSO/6.7-foss-2020b\n",
+                "append_text": " "
+            },
+            "formchk": {
+                "label": "formchk",
+                "description": "",
+                "input_plugin": "gaussian.formchk",
+                "on_computer": true,
+                "remote_abs_path": "/opt/g16_avx2/formchk",
+                "prepend_text": " ",
+                "append_text": " "
+            },
+            "pp-6.7": {
+                "label": "pp-6.7",
+                "description": "Quantum ESPRESSO pp.x",
+                "input_plugin": "quantumespresso.pp",
+                "on_computer": true,
+                "remote_abs_path": "/home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/pp.x",
+                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load QuantumESPRESSO/6.7-foss-2020b\n",
+                "append_text": " "
+            }
+        },
+        "tigu": {
+            "computer-configure": {
+                "safe_interval": 30.0,
+                "proxy_jump": "{username}@ela.cscs.ch,{username}@jump1.empa.ch"
+            },
+            "computer-setup": {
+                "label": "tigu",
+                "hostname": "10.128.1.11",
+                "description": "Tigu computer at Empa.",
+                "transport": "ssh",
+                "scheduler": "slurm",
+                "shebang": "#!/bin/bash -l",
+                "mpiprocs_per_machine": 4,
+                "queue_name": "normal",
+                "work_dir": "/scratch/{username}/aiida/",
+                "mpirun_command": "srun",
+                "prepend_text": "export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}\nulimit -s unlimited\n"
+            },
+            "cp2k-8.1": {
+                "label": "cp2k-8.1",
+                "description": "CP2K version 8.1.",
+                "input_plugin": "cp2k",
+                "on_computer": true,
+                "remote_abs_path": "/home/eimk/.local/easybuild/software/CP2K/8.1-foss-2020b/bin/cp2k.psmp",
+                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load CP2K/8.1-foss-2020b\nexport CP2K_DATA_DIR=\"/home/eimk/.local/easybuild/software/CP2K/8.1-foss-2020b/data\"\n",
+                "append_text": " "
+            },
+            "gaussian-16": {
+                "label": "gaussian-16",
+                "description": "Gaussian 16",
+                "input_plugin": "gaussian",
+                "on_computer": true,
+                "remote_abs_path": "/opt/g16_avx2/g16",
+                "prepend_text": " ",
+                "append_text": " "
+            },
+            "projwfc-6.7": {
+                "label": "projwfc-6.7",
+                "description": "Quantum ESPRESSO projwfc.x",
+                "input_plugin": "quantumespresso.projwfc",
+                "on_computer": true,
+                "remote_abs_path": "/home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/projwfc.x",
+                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load QuantumESPRESSO/6.7-foss-2020b\n",
+                "append_text": " "
+            },
+            "cubegen": {
+                "label": "cubegen",
+                "description": "Cubegen utility from Gaussian 16 package.",
+                "input_plugin": "gaussian.cubegen",
+                "on_computer": true,
+                "remote_abs_path": "/opt/g16_avx2/cubegen",
+                "prepend_text": " ",
+                "append_text": " "
+            },
+            "pw-6.7": {
+                "label": "pw-6.7",
+                "description": "Quantum ESPRESSO pw.x",
+                "input_plugin": "quantumespresso.pw",
+                "on_computer": true,
+                "remote_abs_path": "/home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/pw.x",
+                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load QuantumESPRESSO/6.7-foss-2020b\n",
+                "append_text": " "
+            },
+            "formchk": {
+                "label": "formchk",
+                "description": "",
+                "input_plugin": "gaussian.formchk",
+                "on_computer": true,
+                "remote_abs_path": "/opt/g16_avx2/formchk",
+                "prepend_text": " ",
+                "append_text": " "
+            },
+            "pp-6.7": {
+                "label": "pp-6.7",
+                "description": "Quantum ESPRESSO pp.x",
+                "input_plugin": "quantumespresso.pp",
+                "on_computer": true,
+                "remote_abs_path": "/home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/pp.x",
+                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load QuantumESPRESSO/6.7-foss-2020b\n",
+                "append_text": " "
+            }
+        },
+        "default": "tigu"
+    },
     "fidis.epfl.ch": {
         "fidis-CH-315": {
             "computer-configure": {
