@@ -1,0 +1,14 @@
+---
+label: tigu-mpirun
+hostname: 10.128.1.11
+description: Tigu computer at Empa.
+transport: ssh
+scheduler: slurm
+shebang: "#!/bin/bash -l"
+mpiprocs_per_machine: 4
+queue_name: normal
+work_dir: /scratch/{username}/aiida/
+mpirun_command: mpirun -np {tot_num_mpiprocs}
+prepend_text: |
+  export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}
+  ulimit -s unlimited

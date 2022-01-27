@@ -1,0 +1,11 @@
+---
+label: cp2k-8.1
+description: CP2K version 8.1.
+input_plugin: cp2k
+on_computer: true
+remote_abs_path: /home/eimk/.local/easybuild/software/CP2K/8.1-foss-2020b/bin/cp2k.psmp
+prepend_text: |
+  module use /home/eimk/.local/easybuild/modules/all
+  module load CP2K/8.1-foss-2020b
+  export CP2K_DATA_DIR="/home/eimk/.local/easybuild/software/CP2K/8.1-foss-2020b/data"
+append_text: " "

@@ -1,0 +1,8 @@
+---
+label: formchk
+description: ""
+input_plugin: gaussian.formchk
+on_computer: true
+remote_abs_path: /opt/g16_avx2/formchk
+prepend_text: " "
+append_text: " "
