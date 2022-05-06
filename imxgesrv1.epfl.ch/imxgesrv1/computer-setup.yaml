@@ -1,0 +1,15 @@
+---
+label: "imxgesrv1"
+hostname: "imxgesrv1.epfl.ch"
+description: imxgesrv EPFL computer
+transport: ssh
+scheduler: "slurm"
+work_dir: "/exports/commonscratch/{username}/aiida_run/"
+shebang: "#!/bin/bash"
+mpirun_command: "srun -n {tot_num_mpiprocs}"
+mpiprocs_per_machine: 32
+prepend_text: |
+    #SBATCH --cpus-per-task=2
+
+    export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
+append_text: " "
