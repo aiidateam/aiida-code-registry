@@ -1,0 +1,26 @@
+computers:
+  - label: localhost
+    setup:
+      hostname: localhost
+      description: AiiDAlab docker container
+      transport: core.local
+      scheduler: core.direct
+      work_dir: /home/{username}/aiida_run
+      append_text: " "
+      prepend_text: ""
+      shebang: "#!/bin/bash"
+      mpirun_command: "mpirun -np {tot_num_mpiprocs}"
+    codes:
+      - label: base
+        description: conda base environment in container
+        computer: localhost
+        on_computer: true
+        remote_abs_path: /opt/conda/bin/python
+        input_plugin: dynamic_workflows.PyCalcJob
+        prepend_text: "source /opt/conda/etc/profile.d/conda.sh\nconda activate base"
+      - label: multi-executable-code-{{ executable }}
+        description: ...
+        computer: localhost
+        on_computer: true
+        remote_abs_path: /a/b/c/{{ executable }}
+        input_plugin: multi-ex
