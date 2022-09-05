@@ -1,7 +1,7 @@
 import os
 import yaml
 import json
-
+import copy
 from pathlib import Path
 
 # Define the parent folder location
@@ -51,9 +51,29 @@ for domain in final_dict:
     link = os.readlink(library_path/domain/'default')
     final_dict[domain]['default'] = str(Path(link))
 
+# Prepare the config db for aiida 2.x data type entry points compatibility
+def update_to_v2_entry_points(comp_setup: dict) -> dict:
+    # v1 -> v2 with attach `core.` in front for transport and scheduler
+    res = copy.deepcopy(comp_setup)
+    for k, v in comp_setup.items():
+        if k in ['transport', 'scheduler']:
+            res[k] = '.'.join(['core', v])
+
+    return res
+
+final_dict_v2 = copy.deepcopy(final_dict)
+
+# Loop over or the fields and update to compatible with aiida 2.x entry points name
+for domain in final_dict_v2:
+    for computer in final_dict_v2[domain]:
+        if computer != 'default':
+            final_dict_v2[domain][computer]["computer-setup"] = update_to_v2_entry_points(final_dict_v2[domain][computer]["computer-setup"])
+
 # Store the extracted information as a single JSON file.
 os.mkdir(folder_path/'out')
 with open(folder_path/'out/database.json', 'w') as filep:
     json.dump(final_dict, filep, indent=4)
 
-
+# Stroe the v2 compatible entry points
+with open(folder_path/'out/database_v2.json', 'w') as filep:
+    json.dump(final_dict_v2, filep, indent=4)
