@@ -2,8 +2,8 @@ name: deploy
 
 on:
   push:
-    branches:
-      - master
+    # branches:
+    #   - master
 
 
 jobs:
@@ -22,8 +22,8 @@ jobs:
     needs: pre-commit
     runs-on: ubuntu-latest
     env:
-    COMMIT_AUTHOR: Deploy Action
-    COMMIT_AUTHOR_EMAIL: action@github.com
+      COMMIT_AUTHOR: Deploy Action
+      COMMIT_AUTHOR_EMAIL: action@github.com
 
     steps:
     - uses: actions/checkout@v2
