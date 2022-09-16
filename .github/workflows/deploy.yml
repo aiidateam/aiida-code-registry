@@ -18,7 +18,7 @@ jobs:
     - uses: pre-commit/action@v2.0.0
 
   deploy-gh-pages:
-    if: github.repository == 'aiidateam/aiida-code-registry' # xxx: change to aiidateam after
+    if: github.repository == 'aiidateam/aiida-code-registry'
     needs: pre-commit
     runs-on: ubuntu-latest
     env:
