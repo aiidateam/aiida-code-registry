@@ -1,0 +1,10 @@
+---
+label: "raspa-CH315"
+description: "RASPA2 cloned from https://github.com/iRASPA/RASPA2.git"
+input_plugin: "raspa"
+on_computer: true
+remote_abs_path: "/usr/local/bin/lsmo-codes/simulate_4467e14_ubu18"
+prepend_text: |
+  export DYLD_LIBRARY_PATH=/usr/local/bin/lsmo-codes/lib/raspa
+  export LD_LIBRARY_PATH=/usr/local/bin/lsmo-codes/lib/raspa
+append_text: " "
