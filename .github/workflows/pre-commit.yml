@@ -13,7 +13,6 @@ jobs:
       with:
         python-version: 3.8
     - uses: pre-commit/action@v2.0.0
-  
   test_generate_json:
     runs-on: ubuntu-latest
     steps:
