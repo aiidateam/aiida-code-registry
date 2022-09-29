@@ -15,12 +15,7 @@ jobs:
     - uses: pre-commit/action@v2.0.0
   
   generate_json:
-    if: github.repository == 'aiidateam/aiida-code-registry'
-    needs: pre-commit
     runs-on: ubuntu-latest
-    env:
-      COMMIT_AUTHOR: Deploy Action
-      COMMIT_AUTHOR_EMAIL: action@github.com
 
     steps:
     - uses: actions/checkout@v2
