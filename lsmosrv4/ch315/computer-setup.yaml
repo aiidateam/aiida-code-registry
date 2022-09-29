@@ -1,7 +1,7 @@
 ---
-label: "lsmosrv4-CH315"
+label: "ch315"
 hostname: "lsmosrv4.epfl.ch"
-description: Local server at LSMO
+description: Local server ch315 at LSMO
 transport: ssh
 scheduler: slurm
 work_dir: "/home/{username}/aiida_run/"
