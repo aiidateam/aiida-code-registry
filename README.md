@@ -4,6 +4,15 @@
 
 This repository collects configurations of simulation codes on public compute resources for quick and easy setup in AiiDA.
 
+## Using the AiiDA code registry (python package)
+
+```
+import aiida_code_registry as registry
+
+code1 = registry.load_code('base@localhost')
+code2 = registry.load_code('qe-pw@localhost', template_vars(dict(executable='pw')))
+```
+
 ## Using the AiiDA code registry
 
 In the following we'll take the example of [Piz Daint](https://www.cscs.ch/computers/piz-daint/), a HPC system at the Swiss National Supercomputing Centre.
