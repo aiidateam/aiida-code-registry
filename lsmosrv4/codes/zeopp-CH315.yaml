@@ -3,6 +3,6 @@ label: "zeopp-46ce745"
 description: "Zeo++ cloned from https://github.com/mharanczyk/zeoplusplus"
 input_plugin: "zeopp.network"
 on_computer: true
-remote_abs_path: "/work/lsmo/aiida-lsmo-codes/bin/network_46ce745_ubu18"
+remote_abs_path: "/usr/local/bin/lsmo-codes/network_46ce745_ubu18"
 prepend_text: " "
 append_text: " "
