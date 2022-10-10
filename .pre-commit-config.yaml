@@ -1,18 +1,12 @@
+---
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0  # Use the ref you want to point at
-    hooks:
-    - id: trailing-whitespace
-    - id: check-yaml
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v4.3.0 # Use the ref you want to point at
+      hooks:
+          - id: trailing-whitespace
+          - id: check-yaml
 
-  - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.28.0
-    hooks:
-      - id: yamllint
-        args: [-c=.yamllint, -s]
-        # only check yaml files for codes and computers setting
-        exclude: >
-          (?x)^(
-            .github/.* |
-            .pre-commit-config.yaml |
-          )$
+    - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
+      rev: 0.2.2
+      hooks:
+          - id: yamlfmt
