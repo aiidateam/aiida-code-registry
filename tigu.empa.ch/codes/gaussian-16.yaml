@@ -4,5 +4,5 @@ description: Gaussian 16
 input_plugin: gaussian
 on_computer: true
 remote_abs_path: /opt/g16_avx2/g16
-prepend_text: " "
-append_text: " "
+prepend_text: ' '
+append_text: ' '

@@ -1,13 +1,13 @@
 ---
-label: "cp2k-5.1"
-description: "CP2K 5.1 compiled by SCITAS"
-input_plugin: "cp2k"
+label: cp2k-5.1
+description: CP2K 5.1 compiled by SCITAS
+input_plugin: cp2k
 on_computer: true
-remote_abs_path: "/ssoft/spack/cornalin/v2/opt/spack/linux-rhel7-x86_E5v4_Mellanox/intel-17.0.2/cp2k-5.1-gke4ujsx5qhx6zt7ncfo22hajqhp6n6b/bin/cp2k.popt"
+remote_abs_path: /ssoft/spack/cornalin/v2/opt/spack/linux-rhel7-x86_E5v4_Mellanox/intel-17.0.2/cp2k-5.1-gke4ujsx5qhx6zt7ncfo22hajqhp6n6b/bin/cp2k.popt
 prepend_text: |
-  source /ssoft/spack/bin/slmodules.sh -r deprecated
-  module load intel
-  module load intel-mpi intel-mkl
-  module load cp2k/5.1-mpi
-  export CP2K_DATA_DIR=/work/lsmo/aiida-lsmo-codes/data/cp2k/data
-append_text: " "
+    source /ssoft/spack/bin/slmodules.sh -r deprecated
+    module load intel
+    module load intel-mpi intel-mkl
+    module load cp2k/5.1-mpi
+    export CP2K_DATA_DIR=/work/lsmo/aiida-lsmo-codes/data/cp2k/data
+append_text: ' '

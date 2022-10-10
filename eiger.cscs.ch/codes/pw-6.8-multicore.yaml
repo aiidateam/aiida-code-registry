@@ -1,12 +1,12 @@
 ---
-label: "pw-6.8"
+label: pw-6.8
 description: Quantum ESPRESSO dos.x v6.8 Compiled with CpeIntel v21.08
-input_plugin: "quantumespresso.pw"
+input_plugin: quantumespresso.pw
 on_computer: true
-remote_abs_path: "/apps/eiger/UES/jenkins/1.4.0/software/QuantumESPRESSO/6.8.0-cpeIntel-21.08/bin/pw.x"
+remote_abs_path: /apps/eiger/UES/jenkins/1.4.0/software/QuantumESPRESSO/6.8.0-cpeIntel-21.08/bin/pw.x
 prepend_text: |
-  module load cpeIntel
-  module load QuantumESPRESSO/6.8.0
+    module load cpeIntel
+    module load QuantumESPRESSO/6.8.0
 
-  export OMP_NUM_THREADS=1
-append_text: " "
+    export OMP_NUM_THREADS=1
+append_text: ' '
