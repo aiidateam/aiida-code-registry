@@ -1,12 +1,12 @@
 ---
-label: "fidis-serial"
-hostname: "fidis.epfl.ch"
+label: fidis-serial
+hostname: fidis.epfl.ch
 description: Fidis EPFL computer using serial partition
 transport: ssh
-scheduler: "slurm"
-work_dir: "/scratch/{username}/aiida_run/"
-shebang: "#!/bin/bash"
-mpirun_command: "srun -n {tot_num_mpiprocs}"
+scheduler: slurm
+work_dir: /scratch/{username}/aiida_run/
+shebang: '#!/bin/bash'
+mpirun_command: srun -n {tot_num_mpiprocs}
 mpiprocs_per_machine: 1
-prepend_text: "#SBATCH --partition=serial"
-append_text: " "
+prepend_text: '#SBATCH --partition=serial'
+append_text: ' '

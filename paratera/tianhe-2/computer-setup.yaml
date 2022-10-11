@@ -6,7 +6,7 @@ transport: ssh
 scheduler: slurm
 shebang: '#!/usr/bin/env bash'
 work_dir: /PARA/{username}/aiida
-mpirun_command: 'srun -n {tot_num_mpiprocs}'
+mpirun_command: srun -n {tot_num_mpiprocs}
 mpiprocs_per_machine: 24
 prepend_text: ''
 append_text: ''

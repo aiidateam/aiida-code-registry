@@ -5,6 +5,6 @@ input_plugin: quantumespresso.pw
 on_computer: true
 remote_abs_path: /home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/pw.x
 prepend_text: |
-  module use /home/eimk/.local/easybuild/modules/all
-  module load QuantumESPRESSO/6.7-foss-2020b
-append_text: " "
+    module use /home/eimk/.local/easybuild/modules/all
+    module load QuantumESPRESSO/6.7-foss-2020b
+append_text: ' '

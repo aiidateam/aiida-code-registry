@@ -1,12 +1,12 @@
 ---
-label: "ch315"
-hostname: "lsmosrv4.epfl.ch"
+label: ch315
+hostname: lsmosrv4.epfl.ch
 description: Local server ch315 at LSMO
 transport: ssh
 scheduler: slurm
-work_dir: "/home/{username}/aiida_run/"
-shebang: "#!/bin/bash"
-mpirun_command: "srun -n {tot_num_mpiprocs}"
+work_dir: /home/{username}/aiida_run/
+shebang: '#!/bin/bash'
+mpirun_command: srun -n {tot_num_mpiprocs}
 mpiprocs_per_machine: 1
-prepend_text: " "
-append_text: " "
+prepend_text: ' '
+append_text: ' '
