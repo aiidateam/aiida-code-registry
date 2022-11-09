@@ -1,121 +1,173 @@
 {
-    "fidis.epfl.ch": {
-        "fidis": {
-            "computer-configure": {
-                "proxy_command": "ssh -q -Y {username}@lsmosrv1.epfl.ch netcat fidis.epfl.ch 22"
-            },
+    "tigu.empa.ch": {
+        "tigu-mpirun": {
             "computer-setup": {
-                "label": "fidis",
-                "hostname": "fidis.epfl.ch",
-                "description": "fidis EPFL computer",
+                "label": "tigu-mpirun",
+                "hostname": "10.128.1.11",
+                "description": "Tigu computer at Empa.",
                 "transport": "ssh",
                 "scheduler": "slurm",
-                "work_dir": "/scratch/{username}/aiida_run/",
-                "shebang": "#!/bin/bash",
-                "mpirun_command": "srun -n {tot_num_mpiprocs}",
-                "mpiprocs_per_machine": 28,
-                "prepend_text": " ",
-                "append_text": " "
+                "shebang": "#!/bin/bash -l",
+                "mpiprocs_per_machine": 4,
+                "queue_name": "normal",
+                "work_dir": "/scratch/{username}/aiida/",
+                "mpirun_command": "mpirun -np {tot_num_mpiprocs}",
+                "prepend_text": "export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}\nulimit -s unlimited\n"
             },
-            "ddec-09_26_2017": {
-                "label": "ddec-09_26_2017",
-                "description": "chargemol_09_26_2017 precompiled linux/parallel binary from https://sourceforge.net/projects/ddec/files/",
-                "input_plugin": "ddec",
-                "on_computer": true,
-                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/chargemol_09_26_2017_ubu18",
-                "prepend_text": " ",
-                "append_text": " "
+            "computer-configure": {
+                "safe_interval": 30.0,
+                "proxy_jump": "{username}@ela.cscs.ch,{username}@jump1.empa.ch"
             },
-            "cp2k-5.1": {
-                "label": "cp2k-5.1",
-                "description": "CP2K 5.1 compiled by SCITAS",
+            "cp2k-8.1": {
+                "label": "cp2k-8.1",
+                "description": "CP2K version 8.1.",
                 "input_plugin": "cp2k",
                 "on_computer": true,
-                "remote_abs_path": "/ssoft/spack/cornalin/v2/opt/spack/linux-rhel7-x86_E5v4_Mellanox/intel-17.0.2/cp2k-5.1-gke4ujsx5qhx6zt7ncfo22hajqhp6n6b/bin/cp2k.popt",
-                "prepend_text": "source /ssoft/spack/bin/slmodules.sh -r deprecated\nmodule load intel\nmodule load intel-mpi intel-mkl\nmodule load cp2k/5.1-mpi\nexport CP2K_DATA_DIR=/work/lsmo/aiida-lsmo-codes/data/cp2k/data\n",
+                "remote_abs_path": "/home/eimk/.local/easybuild/software/CP2K/8.1-foss-2020b/bin/cp2k.psmp",
+                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load CP2K/8.1-foss-2020b\nexport CP2K_DATA_DIR=\"/home/eimk/.local/easybuild/software/CP2K/8.1-foss-2020b/data\"\n",
                 "append_text": " "
             },
-            "raspa-4467e14": {
-                "label": "raspa-4467e14",
-                "description": "RASPA2 cloned from https://github.com/iRASPA/RASPA2.git",
-                "input_plugin": "raspa",
+            "cubegen": {
+                "label": "cubegen",
+                "description": "Cubegen utility from Gaussian 16 package.",
+                "input_plugin": "gaussian.cubegen",
                 "on_computer": true,
-                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/simulate_4467e14_fidis",
-                "prepend_text": "export RASPA_DIR=/work/lsmo/aiida-lsmo-codes/data/raspa\nexport DYLD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\nexport LD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\n",
+                "remote_abs_path": "/opt/g16_avx2/cubegen",
+                "prepend_text": " ",
                 "append_text": " "
             },
-            "zeopp-46ce745": {
-                "label": "zeopp-46ce745",
-                "description": "Zeo++ cloned from https://github.com/mharanczyk/zeoplusplus",
-                "input_plugin": "zeopp.network",
+            "pp-6.7": {
+                "label": "pp-6.7",
+                "description": "Quantum ESPRESSO pp.x",
+                "input_plugin": "quantumespresso.pp",
                 "on_computer": true,
-                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/network_46ce745_ubu18",
+                "remote_abs_path": "/home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/pp.x",
+                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load QuantumESPRESSO/6.7-foss-2020b\n",
+                "append_text": " "
+            },
+            "pw-6.7": {
+                "label": "pw-6.7",
+                "description": "Quantum ESPRESSO pw.x",
+                "input_plugin": "quantumespresso.pw",
+                "on_computer": true,
+                "remote_abs_path": "/home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/pw.x",
+                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load QuantumESPRESSO/6.7-foss-2020b\n",
+                "append_text": " "
+            },
+            "gaussian-16": {
+                "label": "gaussian-16",
+                "description": "Gaussian 16",
+                "input_plugin": "gaussian",
+                "on_computer": true,
+                "remote_abs_path": "/opt/g16_avx2/g16",
+                "prepend_text": " ",
+                "append_text": " "
+            },
+            "projwfc-6.7": {
+                "label": "projwfc-6.7",
+                "description": "Quantum ESPRESSO projwfc.x",
+                "input_plugin": "quantumespresso.projwfc",
+                "on_computer": true,
+                "remote_abs_path": "/home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/projwfc.x",
+                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load QuantumESPRESSO/6.7-foss-2020b\n",
+                "append_text": " "
+            },
+            "formchk": {
+                "label": "formchk",
+                "description": "",
+                "input_plugin": "gaussian.formchk",
+                "on_computer": true,
+                "remote_abs_path": "/opt/g16_avx2/formchk",
                 "prepend_text": " ",
                 "append_text": " "
             }
         },
-        "fidis-serial": {
-            "computer-configure": {
-                "proxy_command": "ssh -q -Y {username}@lsmosrv1.epfl.ch netcat fidis.epfl.ch 22"
-            },
+        "tigu": {
             "computer-setup": {
-                "label": "fidis-serial",
-                "hostname": "fidis.epfl.ch",
-                "description": "Fidis EPFL computer using serial partition",
+                "label": "tigu",
+                "hostname": "10.128.1.11",
+                "description": "Tigu computer at Empa.",
                 "transport": "ssh",
                 "scheduler": "slurm",
-                "work_dir": "/scratch/{username}/aiida_run/",
-                "shebang": "#!/bin/bash",
-                "mpirun_command": "srun -n {tot_num_mpiprocs}",
-                "mpiprocs_per_machine": 1,
-                "prepend_text": "#SBATCH --partition=serial",
+                "shebang": "#!/bin/bash -l",
+                "mpiprocs_per_machine": 4,
+                "queue_name": "normal",
+                "work_dir": "/scratch/{username}/aiida/",
+                "mpirun_command": "srun",
+                "prepend_text": "export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}\nulimit -s unlimited\n"
+            },
+            "computer-configure": {
+                "safe_interval": 30.0,
+                "proxy_jump": "{username}@ela.cscs.ch,{username}@jump1.empa.ch"
+            },
+            "cp2k-8.1": {
+                "label": "cp2k-8.1",
+                "description": "CP2K version 8.1.",
+                "input_plugin": "cp2k",
+                "on_computer": true,
+                "remote_abs_path": "/home/eimk/.local/easybuild/software/CP2K/8.1-foss-2020b/bin/cp2k.psmp",
+                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load CP2K/8.1-foss-2020b\nexport CP2K_DATA_DIR=\"/home/eimk/.local/easybuild/software/CP2K/8.1-foss-2020b/data\"\n",
                 "append_text": " "
             },
-            "ddec-09_26_2017": {
-                "label": "ddec-09_26_2017",
-                "description": "chargemol_09_26_2017 precompiled linux/parallel binary from https://sourceforge.net/projects/ddec/files/",
-                "input_plugin": "ddec",
+            "cubegen": {
+                "label": "cubegen",
+                "description": "Cubegen utility from Gaussian 16 package.",
+                "input_plugin": "gaussian.cubegen",
                 "on_computer": true,
-                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/chargemol_09_26_2017_ubu18",
+                "remote_abs_path": "/opt/g16_avx2/cubegen",
                 "prepend_text": " ",
                 "append_text": " "
             },
-            "cp2k-5.1": {
-                "label": "cp2k-5.1",
-                "description": "CP2K 5.1 compiled by SCITAS",
-                "input_plugin": "cp2k",
+            "pp-6.7": {
+                "label": "pp-6.7",
+                "description": "Quantum ESPRESSO pp.x",
+                "input_plugin": "quantumespresso.pp",
                 "on_computer": true,
-                "remote_abs_path": "/ssoft/spack/cornalin/v2/opt/spack/linux-rhel7-x86_E5v4_Mellanox/intel-17.0.2/cp2k-5.1-gke4ujsx5qhx6zt7ncfo22hajqhp6n6b/bin/cp2k.popt",
-                "prepend_text": "source /ssoft/spack/bin/slmodules.sh -r deprecated\nmodule load intel\nmodule load intel-mpi intel-mkl\nmodule load cp2k/5.1-mpi\nexport CP2K_DATA_DIR=/work/lsmo/aiida-lsmo-codes/data/cp2k/data\n",
+                "remote_abs_path": "/home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/pp.x",
+                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load QuantumESPRESSO/6.7-foss-2020b\n",
                 "append_text": " "
             },
-            "raspa-4467e14": {
-                "label": "raspa-4467e14",
-                "description": "RASPA2 cloned from https://github.com/iRASPA/RASPA2.git",
-                "input_plugin": "raspa",
+            "pw-6.7": {
+                "label": "pw-6.7",
+                "description": "Quantum ESPRESSO pw.x",
+                "input_plugin": "quantumespresso.pw",
                 "on_computer": true,
-                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/simulate_4467e14_fidis",
-                "prepend_text": "export RASPA_DIR=/work/lsmo/aiida-lsmo-codes/data/raspa\nexport DYLD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\nexport LD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\n",
+                "remote_abs_path": "/home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/pw.x",
+                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load QuantumESPRESSO/6.7-foss-2020b\n",
                 "append_text": " "
             },
-            "zeopp-46ce745": {
-                "label": "zeopp-46ce745",
-                "description": "Zeo++ cloned from https://github.com/mharanczyk/zeoplusplus",
-                "input_plugin": "zeopp.network",
+            "gaussian-16": {
+                "label": "gaussian-16",
+                "description": "Gaussian 16",
+                "input_plugin": "gaussian",
                 "on_computer": true,
-                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/network_46ce745_ubu18",
+                "remote_abs_path": "/opt/g16_avx2/g16",
+                "prepend_text": " ",
+                "append_text": " "
+            },
+            "projwfc-6.7": {
+                "label": "projwfc-6.7",
+                "description": "Quantum ESPRESSO projwfc.x",
+                "input_plugin": "quantumespresso.projwfc",
+                "on_computer": true,
+                "remote_abs_path": "/home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/projwfc.x",
+                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load QuantumESPRESSO/6.7-foss-2020b\n",
+                "append_text": " "
+            },
+            "formchk": {
+                "label": "formchk",
+                "description": "",
+                "input_plugin": "gaussian.formchk",
+                "on_computer": true,
+                "remote_abs_path": "/opt/g16_avx2/formchk",
                 "prepend_text": " ",
                 "append_text": " "
             }
         },
-        "default": "fidis"
+        "default": "tigu"
     },
     "daint.cscs.ch": {
         "hybrid": {
-            "computer-configure": {
-                "safe_interval": 60,
-                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat daint.cscs.ch 22"
-            },
             "computer-setup": {
                 "label": "daint-hybrid",
                 "hostname": "daint.cscs.ch",
@@ -130,79 +182,10 @@
                 "mpirun_command": "srun -n {tot_num_mpiprocs}",
                 "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=normal\n#SBATCH --constraint=gpu\n#SBATCH --hint=nomultithread\nexport OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK\nexport CRAY_CUDA_MPS=1\nulimit -s unlimited\n### computer prepend_text end ###\n"
             },
-            "projwfc-7.0-multicore": {
-                "label": "projwfc-7.0",
-                "description": "PROJWFC compiled for daint-mc",
-                "input_plugin": "quantumespresso.projwfc",
-                "on_computer": true,
-                "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-mc/software/QuantumESPRESSO/7.0-CrayIntel-21.09/bin/projwfc.x",
-                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO\n",
-                "append_text": " "
-            },
-            "pw-7.0-multicore": {
-                "label": "pw-7.0",
-                "description": "PW compiled for daint-mc",
-                "input_plugin": "quantumespresso.pw",
-                "on_computer": true,
-                "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-mc/software/QuantumESPRESSO/7.0-CrayIntel-21.09/bin/pw.x",
-                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO\n",
-                "append_text": " "
-            },
-            "cp2k-9.1-multicore": {
-                "label": "cp2k-9.1",
-                "description": "CP2K 9.1 compiled by CSCS",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-mc/software/CP2K/9.1-CrayGNU-21.09/bin/cp2k.psmp",
-                "prepend_text": "module load daint-mc\nmodule load CP2K\n",
-                "append_text": " "
-            },
-            "cp2k-9.1-hybrid": {
-                "label": "cp2k-9.1",
-                "description": "CP2K compiled for daint-gpu",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-gpu/software/CP2K/9.1-CrayGNU-21.09-cuda/bin/cp2k.psmp",
-                "prepend_text": "module load daint-gpu\nmodule load CP2K\n",
-                "append_text": " "
-            },
-            "dos-7.0-multicore": {
-                "label": "dos-7.0",
-                "description": "QE dos.x compiled for daint-mc",
-                "input_plugin": "quantumespresso.dos",
-                "on_computer": true,
-                "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-mc/software/QuantumESPRESSO/7.0-CrayIntel-21.09/bin/dos.x",
-                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO\n",
-                "append_text": " "
-            },
-            "pp-7.0-multicore": {
-                "label": "pp-7.0",
-                "description": "PP compiled for daint-mc",
-                "input_plugin": "quantumespresso.pp",
-                "on_computer": true,
-                "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-mc/software/QuantumESPRESSO/7.0-CrayIntel-21.09/bin/pp.x",
-                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO\n",
-                "append_text": " "
-            }
-        },
-        "multicore": {
             "computer-configure": {
                 "safe_interval": 60,
                 "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat daint.cscs.ch 22"
             },
-            "computer-setup": {
-                "label": "daint-mc",
-                "hostname": "daint.cscs.ch",
-                "description": "Piz Daint supercomputer at CSCS Lugano, Switzerland, multicore partition.",
-                "transport": "ssh",
-                "scheduler": "slurm",
-                "work_dir": "/scratch/snx3000/{username}/aiida_run/",
-                "shebang": "#!/bin/bash",
-                "mpirun_command": "srun -n {tot_num_mpiprocs}",
-                "mpiprocs_per_machine": 36,
-                "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=normal\n#SBATCH --constraint=mc\n#SBATCH --cpus-per-task=1\nexport OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK\nsource $MODULESHOME/init/bash\nulimit -s unlimited\n### computer prepend_text end ###\n",
-                "append_text": " "
-            },
             "projwfc-7.0-multicore": {
                 "label": "projwfc-7.0",
                 "description": "PROJWFC compiled for daint-mc",
@@ -218,6 +201,24 @@
                 "input_plugin": "quantumespresso.pw",
                 "on_computer": true,
                 "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-mc/software/QuantumESPRESSO/7.0-CrayIntel-21.09/bin/pw.x",
+                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO\n",
+                "append_text": " "
+            },
+            "dos-7.0-multicore": {
+                "label": "dos-7.0",
+                "description": "QE dos.x compiled for daint-mc",
+                "input_plugin": "quantumespresso.dos",
+                "on_computer": true,
+                "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-mc/software/QuantumESPRESSO/7.0-CrayIntel-21.09/bin/dos.x",
+                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO\n",
+                "append_text": " "
+            },
+            "pp-7.0-multicore": {
+                "label": "pp-7.0",
+                "description": "PP compiled for daint-mc",
+                "input_plugin": "quantumespresso.pp",
+                "on_computer": true,
+                "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-mc/software/QuantumESPRESSO/7.0-CrayIntel-21.09/bin/pp.x",
                 "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO\n",
                 "append_text": " "
             },
@@ -237,32 +238,10 @@
                 "on_computer": true,
                 "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-gpu/software/CP2K/9.1-CrayGNU-21.09-cuda/bin/cp2k.psmp",
                 "prepend_text": "module load daint-gpu\nmodule load CP2K\n",
-                "append_text": " "
-            },
-            "dos-7.0-multicore": {
-                "label": "dos-7.0",
-                "description": "QE dos.x compiled for daint-mc",
-                "input_plugin": "quantumespresso.dos",
-                "on_computer": true,
-                "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-mc/software/QuantumESPRESSO/7.0-CrayIntel-21.09/bin/dos.x",
-                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO\n",
-                "append_text": " "
-            },
-            "pp-7.0-multicore": {
-                "label": "pp-7.0",
-                "description": "PP compiled for daint-mc",
-                "input_plugin": "quantumespresso.pp",
-                "on_computer": true,
-                "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-mc/software/QuantumESPRESSO/7.0-CrayIntel-21.09/bin/pp.x",
-                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO\n",
                 "append_text": " "
             }
         },
         "hybrid-s1141": {
-            "computer-configure": {
-                "safe_interval": 60,
-                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat daint.cscs.ch 22"
-            },
             "computer-setup": {
                 "label": "daint-hybrid-s1141",
                 "hostname": "daint.cscs.ch",
@@ -277,6 +256,10 @@
                 "mpirun_command": "srun -n {tot_num_mpiprocs}",
                 "prepend_text": "#SBATCH --partition=normal\n#SBATCH --account=s1141\n#SBATCH --constraint=gpu\nexport OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}\nsource $MODULESHOME/init/bash\nexport CRAY_CUDA_MPS=1\nulimit -s unlimited\n"
             },
+            "computer-configure": {
+                "safe_interval": 60,
+                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat daint.cscs.ch 22"
+            },
             "projwfc-7.0-multicore": {
                 "label": "projwfc-7.0",
                 "description": "PROJWFC compiled for daint-mc",
@@ -292,6 +275,24 @@
                 "input_plugin": "quantumespresso.pw",
                 "on_computer": true,
                 "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-mc/software/QuantumESPRESSO/7.0-CrayIntel-21.09/bin/pw.x",
+                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO\n",
+                "append_text": " "
+            },
+            "dos-7.0-multicore": {
+                "label": "dos-7.0",
+                "description": "QE dos.x compiled for daint-mc",
+                "input_plugin": "quantumespresso.dos",
+                "on_computer": true,
+                "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-mc/software/QuantumESPRESSO/7.0-CrayIntel-21.09/bin/dos.x",
+                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO\n",
+                "append_text": " "
+            },
+            "pp-7.0-multicore": {
+                "label": "pp-7.0",
+                "description": "PP compiled for daint-mc",
+                "input_plugin": "quantumespresso.pp",
+                "on_computer": true,
+                "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-mc/software/QuantumESPRESSO/7.0-CrayIntel-21.09/bin/pp.x",
                 "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO\n",
                 "append_text": " "
             },
@@ -312,6 +313,43 @@
                 "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-gpu/software/CP2K/9.1-CrayGNU-21.09-cuda/bin/cp2k.psmp",
                 "prepend_text": "module load daint-gpu\nmodule load CP2K\n",
                 "append_text": " "
+            }
+        },
+        "multicore": {
+            "computer-setup": {
+                "label": "daint-mc",
+                "hostname": "daint.cscs.ch",
+                "description": "Piz Daint supercomputer at CSCS Lugano, Switzerland, multicore partition.",
+                "transport": "ssh",
+                "scheduler": "slurm",
+                "work_dir": "/scratch/snx3000/{username}/aiida_run/",
+                "shebang": "#!/bin/bash",
+                "mpirun_command": "srun -n {tot_num_mpiprocs}",
+                "mpiprocs_per_machine": 36,
+                "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=normal\n#SBATCH --constraint=mc\n#SBATCH --cpus-per-task=1\nexport OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK\nsource $MODULESHOME/init/bash\nulimit -s unlimited\n### computer prepend_text end ###\n",
+                "append_text": " "
+            },
+            "computer-configure": {
+                "safe_interval": 60,
+                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat daint.cscs.ch 22"
+            },
+            "projwfc-7.0-multicore": {
+                "label": "projwfc-7.0",
+                "description": "PROJWFC compiled for daint-mc",
+                "input_plugin": "quantumespresso.projwfc",
+                "on_computer": true,
+                "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-mc/software/QuantumESPRESSO/7.0-CrayIntel-21.09/bin/projwfc.x",
+                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO\n",
+                "append_text": " "
+            },
+            "pw-7.0-multicore": {
+                "label": "pw-7.0",
+                "description": "PW compiled for daint-mc",
+                "input_plugin": "quantumespresso.pw",
+                "on_computer": true,
+                "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-mc/software/QuantumESPRESSO/7.0-CrayIntel-21.09/bin/pw.x",
+                "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO\n",
+                "append_text": " "
             },
             "dos-7.0-multicore": {
                 "label": "dos-7.0",
@@ -330,15 +368,30 @@
                 "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-mc/software/QuantumESPRESSO/7.0-CrayIntel-21.09/bin/pp.x",
                 "prepend_text": "module load daint-mc\nmodule load QuantumESPRESSO\n",
                 "append_text": " "
+            },
+            "cp2k-9.1-multicore": {
+                "label": "cp2k-9.1",
+                "description": "CP2K 9.1 compiled by CSCS",
+                "input_plugin": "cp2k",
+                "on_computer": true,
+                "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-mc/software/CP2K/9.1-CrayGNU-21.09/bin/cp2k.psmp",
+                "prepend_text": "module load daint-mc\nmodule load CP2K\n",
+                "append_text": " "
+            },
+            "cp2k-9.1-hybrid": {
+                "label": "cp2k-9.1",
+                "description": "CP2K compiled for daint-gpu",
+                "input_plugin": "cp2k",
+                "on_computer": true,
+                "remote_abs_path": "/apps/dom/UES/jenkins/7.0.UP03/21.09/dom-gpu/software/CP2K/9.1-CrayGNU-21.09-cuda/bin/cp2k.psmp",
+                "prepend_text": "module load daint-gpu\nmodule load CP2K\n",
+                "append_text": " "
             }
         },
         "default": "hybrid"
     },
     "imxgesrv1.epfl.ch": {
         "imxgesrv1": {
-            "computer-configure": {
-                "safe_interval": 60
-            },
             "computer-setup": {
                 "label": "imxgesrv1",
                 "hostname": "imxgesrv1.epfl.ch",
@@ -352,12 +405,15 @@
                 "prepend_text": "#SBATCH --cpus-per-task=2\n\nexport OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}\n",
                 "append_text": " "
             },
-            "projwfc-6.7": {
-                "label": "projwfc-6.7",
-                "description": "QuantumESPRESSO 6.7.0 projwfc.x code",
-                "input_plugin": "quantumespresso.projwfc",
+            "computer-configure": {
+                "safe_interval": 60
+            },
+            "ph-6.7": {
+                "label": "ph-6.7",
+                "description": "QuantumESPRESSO 6.7.0",
+                "input_plugin": "quantumespresso.ph",
                 "on_computer": true,
-                "remote_abs_path": "/home/software/apps/codes/intel/19.1.3.304/quantum-espresso/6.7.0_MPI_MKL/bin/projwfc.x",
+                "remote_abs_path": "/home/software/apps/codes/intel/19.1.3.304/quantum-espresso/6.7.0_MPI_MKL/bin/ph.x",
                 "prepend_text": "module load intel/19.1.3.304\nmodule load intel-mkl/2020.4.304\nmodule load intel-mpi/2019.9.304\nmodule load quantum-espresso/6.7.0-mpi\n",
                 "append_text": " "
             },
@@ -370,6 +426,15 @@
                 "prepend_text": "module load intel/19.1.3.304\nmodule load intel-mkl/2020.4.304\nmodule load intel-mpi/2019.9.304\nmodule load quantum-espresso/6.7.0-mpi\n",
                 "append_text": " "
             },
+            "projwfc-6.7": {
+                "label": "projwfc-6.7",
+                "description": "QuantumESPRESSO 6.7.0 projwfc.x code",
+                "input_plugin": "quantumespresso.projwfc",
+                "on_computer": true,
+                "remote_abs_path": "/home/software/apps/codes/intel/19.1.3.304/quantum-espresso/6.7.0_MPI_MKL/bin/projwfc.x",
+                "prepend_text": "module load intel/19.1.3.304\nmodule load intel-mkl/2020.4.304\nmodule load intel-mpi/2019.9.304\nmodule load quantum-espresso/6.7.0-mpi\n",
+                "append_text": " "
+            },
             "dos-6.7": {
                 "label": "dos-6.7",
                 "description": "QuantumESPRESSO 6.7.0 dos.x code",
@@ -378,218 +443,9 @@
                 "remote_abs_path": "/home/software/apps/codes/intel/19.1.3.304/quantum-espresso/6.7.0_MPI_MKL/bin/dos.x",
                 "prepend_text": "module load intel/19.1.3.304\nmodule load intel-mkl/2020.4.304\nmodule load intel-mpi/2019.9.304\nmodule load quantum-espresso/6.7.0-mpi\n",
                 "append_text": " "
-            },
-            "ph-6.7": {
-                "label": "ph-6.7",
-                "description": "QuantumESPRESSO 6.7.0",
-                "input_plugin": "quantumespresso.ph",
-                "on_computer": true,
-                "remote_abs_path": "/home/software/apps/codes/intel/19.1.3.304/quantum-espresso/6.7.0_MPI_MKL/bin/ph.x",
-                "prepend_text": "module load intel/19.1.3.304\nmodule load intel-mkl/2020.4.304\nmodule load intel-mpi/2019.9.304\nmodule load quantum-espresso/6.7.0-mpi\n",
-                "append_text": " "
             }
         },
         "default": "imxgesrv1"
-    },
-    "tigu.empa.ch": {
-        "tigu-mpirun": {
-            "computer-configure": {
-                "safe_interval": 30.0,
-                "proxy_jump": "{username}@ela.cscs.ch,{username}@jump1.empa.ch"
-            },
-            "computer-setup": {
-                "label": "tigu-mpirun",
-                "hostname": "10.128.1.11",
-                "description": "Tigu computer at Empa.",
-                "transport": "ssh",
-                "scheduler": "slurm",
-                "shebang": "#!/bin/bash -l",
-                "mpiprocs_per_machine": 4,
-                "queue_name": "normal",
-                "work_dir": "/scratch/{username}/aiida/",
-                "mpirun_command": "mpirun -np {tot_num_mpiprocs}",
-                "prepend_text": "export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}\nulimit -s unlimited\n"
-            },
-            "projwfc-6.7": {
-                "label": "projwfc-6.7",
-                "description": "Quantum ESPRESSO projwfc.x",
-                "input_plugin": "quantumespresso.projwfc",
-                "on_computer": true,
-                "remote_abs_path": "/home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/projwfc.x",
-                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load QuantumESPRESSO/6.7-foss-2020b\n",
-                "append_text": " "
-            },
-            "pp-6.7": {
-                "label": "pp-6.7",
-                "description": "Quantum ESPRESSO pp.x",
-                "input_plugin": "quantumespresso.pp",
-                "on_computer": true,
-                "remote_abs_path": "/home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/pp.x",
-                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load QuantumESPRESSO/6.7-foss-2020b\n",
-                "append_text": " "
-            },
-            "pw-6.7": {
-                "label": "pw-6.7",
-                "description": "Quantum ESPRESSO pw.x",
-                "input_plugin": "quantumespresso.pw",
-                "on_computer": true,
-                "remote_abs_path": "/home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/pw.x",
-                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load QuantumESPRESSO/6.7-foss-2020b\n",
-                "append_text": " "
-            },
-            "formchk": {
-                "label": "formchk",
-                "description": "",
-                "input_plugin": "gaussian.formchk",
-                "on_computer": true,
-                "remote_abs_path": "/opt/g16_avx2/formchk",
-                "prepend_text": " ",
-                "append_text": " "
-            },
-            "gaussian-16": {
-                "label": "gaussian-16",
-                "description": "Gaussian 16",
-                "input_plugin": "gaussian",
-                "on_computer": true,
-                "remote_abs_path": "/opt/g16_avx2/g16",
-                "prepend_text": " ",
-                "append_text": " "
-            },
-            "cp2k-8.1": {
-                "label": "cp2k-8.1",
-                "description": "CP2K version 8.1.",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/home/eimk/.local/easybuild/software/CP2K/8.1-foss-2020b/bin/cp2k.psmp",
-                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load CP2K/8.1-foss-2020b\nexport CP2K_DATA_DIR=\"/home/eimk/.local/easybuild/software/CP2K/8.1-foss-2020b/data\"\n",
-                "append_text": " "
-            },
-            "cubegen": {
-                "label": "cubegen",
-                "description": "Cubegen utility from Gaussian 16 package.",
-                "input_plugin": "gaussian.cubegen",
-                "on_computer": true,
-                "remote_abs_path": "/opt/g16_avx2/cubegen",
-                "prepend_text": " ",
-                "append_text": " "
-            }
-        },
-        "tigu": {
-            "computer-configure": {
-                "safe_interval": 30.0,
-                "proxy_jump": "{username}@ela.cscs.ch,{username}@jump1.empa.ch"
-            },
-            "computer-setup": {
-                "label": "tigu",
-                "hostname": "10.128.1.11",
-                "description": "Tigu computer at Empa.",
-                "transport": "ssh",
-                "scheduler": "slurm",
-                "shebang": "#!/bin/bash -l",
-                "mpiprocs_per_machine": 4,
-                "queue_name": "normal",
-                "work_dir": "/scratch/{username}/aiida/",
-                "mpirun_command": "srun",
-                "prepend_text": "export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}\nulimit -s unlimited\n"
-            },
-            "projwfc-6.7": {
-                "label": "projwfc-6.7",
-                "description": "Quantum ESPRESSO projwfc.x",
-                "input_plugin": "quantumespresso.projwfc",
-                "on_computer": true,
-                "remote_abs_path": "/home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/projwfc.x",
-                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load QuantumESPRESSO/6.7-foss-2020b\n",
-                "append_text": " "
-            },
-            "pp-6.7": {
-                "label": "pp-6.7",
-                "description": "Quantum ESPRESSO pp.x",
-                "input_plugin": "quantumespresso.pp",
-                "on_computer": true,
-                "remote_abs_path": "/home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/pp.x",
-                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load QuantumESPRESSO/6.7-foss-2020b\n",
-                "append_text": " "
-            },
-            "pw-6.7": {
-                "label": "pw-6.7",
-                "description": "Quantum ESPRESSO pw.x",
-                "input_plugin": "quantumespresso.pw",
-                "on_computer": true,
-                "remote_abs_path": "/home/eimk/.local/easybuild/software/QuantumESPRESSO/6.7-foss-2020b/bin/pw.x",
-                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load QuantumESPRESSO/6.7-foss-2020b\n",
-                "append_text": " "
-            },
-            "formchk": {
-                "label": "formchk",
-                "description": "",
-                "input_plugin": "gaussian.formchk",
-                "on_computer": true,
-                "remote_abs_path": "/opt/g16_avx2/formchk",
-                "prepend_text": " ",
-                "append_text": " "
-            },
-            "gaussian-16": {
-                "label": "gaussian-16",
-                "description": "Gaussian 16",
-                "input_plugin": "gaussian",
-                "on_computer": true,
-                "remote_abs_path": "/opt/g16_avx2/g16",
-                "prepend_text": " ",
-                "append_text": " "
-            },
-            "cp2k-8.1": {
-                "label": "cp2k-8.1",
-                "description": "CP2K version 8.1.",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/home/eimk/.local/easybuild/software/CP2K/8.1-foss-2020b/bin/cp2k.psmp",
-                "prepend_text": "module use /home/eimk/.local/easybuild/modules/all\nmodule load CP2K/8.1-foss-2020b\nexport CP2K_DATA_DIR=\"/home/eimk/.local/easybuild/software/CP2K/8.1-foss-2020b/data\"\n",
-                "append_text": " "
-            },
-            "cubegen": {
-                "label": "cubegen",
-                "description": "Cubegen utility from Gaussian 16 package.",
-                "input_plugin": "gaussian.cubegen",
-                "on_computer": true,
-                "remote_abs_path": "/opt/g16_avx2/cubegen",
-                "prepend_text": " ",
-                "append_text": " "
-            }
-        },
-        "default": "tigu"
-    },
-    "paratera": {
-        "tianhe-2": {
-            "computer-configure": {
-                "port": 2200,
-                "allow_agent": false,
-                "safe_interval": 60.0,
-                "use_login_shell": true
-            },
-            "computer-setup": {
-                "label": "paratera-th2",
-                "description": "TianHe-2 supercomputer provided by paratera",
-                "hostname": "119.90.38.52",
-                "transport": "ssh",
-                "scheduler": "slurm",
-                "shebang": "#!/usr/bin/env bash",
-                "work_dir": "/PARA/{username}/aiida",
-                "mpirun_command": "srun -n {tot_num_mpiprocs}",
-                "mpiprocs_per_machine": 24,
-                "prepend_text": "",
-                "append_text": ""
-            },
-            "pw-6.5": {
-                "label": "pw-6.5",
-                "description": "Quantum ESPRESSO v6.5",
-                "input_plugin": "quantumespresso.pw",
-                "on_computer": true,
-                "remote_abs_path": "/WORK/app/Quantum_Espresso/6.5-MPI/bin/pw.x",
-                "prepend_text": "ulimit -s unlimited\nsource /PARA/app/scripts/cn-module.sh\nmodule load Quantum_Espresso/6.5-icc-15.0.1\n",
-                "append_text": " "
-            }
-        },
-        "default": "tianhe-2"
     },
     "lsmosrv4": {
         "ch315": {
@@ -606,15 +462,6 @@
                 "prepend_text": " ",
                 "append_text": " "
             },
-            "raspa-CH315": {
-                "label": "raspa-CH315",
-                "description": "RASPA2 cloned from https://github.com/iRASPA/RASPA2.git",
-                "input_plugin": "raspa",
-                "on_computer": true,
-                "remote_abs_path": "/usr/local/bin/lsmo-codes/simulate_4467e14_ubu18",
-                "prepend_text": "export DYLD_LIBRARY_PATH=/usr/local/bin/lsmo-codes/lib/raspa\nexport LD_LIBRARY_PATH=/usr/local/bin/lsmo-codes/lib/raspa\n",
-                "append_text": " "
-            },
             "zeopp-CH315": {
                 "label": "zeopp-46ce745",
                 "description": "Zeo++ cloned from https://github.com/mharanczyk/zeoplusplus",
@@ -623,16 +470,150 @@
                 "remote_abs_path": "/usr/local/bin/lsmo-codes/network_46ce745_ubu18",
                 "prepend_text": " ",
                 "append_text": " "
+            },
+            "raspa-CH315": {
+                "label": "raspa-CH315",
+                "description": "RASPA2 cloned from https://github.com/iRASPA/RASPA2.git",
+                "input_plugin": "raspa",
+                "on_computer": true,
+                "remote_abs_path": "/usr/local/bin/lsmo-codes/simulate_4467e14_ubu18",
+                "prepend_text": "export DYLD_LIBRARY_PATH=/usr/local/bin/lsmo-codes/lib/raspa\nexport LD_LIBRARY_PATH=/usr/local/bin/lsmo-codes/lib/raspa\n",
+                "append_text": " "
             }
         },
         "default": "ch315"
     },
+    "fidis.epfl.ch": {
+        "fidis": {
+            "computer-setup": {
+                "label": "fidis",
+                "hostname": "fidis.epfl.ch",
+                "description": "fidis EPFL computer",
+                "transport": "ssh",
+                "scheduler": "slurm",
+                "work_dir": "/scratch/{username}/aiida_run/",
+                "shebang": "#!/bin/bash",
+                "mpirun_command": "srun -n {tot_num_mpiprocs}",
+                "mpiprocs_per_machine": 28,
+                "prepend_text": " ",
+                "append_text": " "
+            },
+            "computer-configure": {
+                "proxy_command": "ssh -q -Y {username}@lsmosrv1.epfl.ch netcat fidis.epfl.ch 22"
+            },
+            "ddec-09_26_2017": {
+                "label": "ddec-09_26_2017",
+                "description": "chargemol_09_26_2017 precompiled linux/parallel binary from https://sourceforge.net/projects/ddec/files/",
+                "input_plugin": "ddec",
+                "on_computer": true,
+                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/chargemol_09_26_2017_ubu18",
+                "prepend_text": " ",
+                "append_text": " "
+            },
+            "zeopp-46ce745": {
+                "label": "zeopp-46ce745",
+                "description": "Zeo++ cloned from https://github.com/mharanczyk/zeoplusplus",
+                "input_plugin": "zeopp.network",
+                "on_computer": true,
+                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/network_46ce745_ubu18",
+                "prepend_text": " ",
+                "append_text": " "
+            },
+            "raspa-4467e14": {
+                "label": "raspa-4467e14",
+                "description": "RASPA2 cloned from https://github.com/iRASPA/RASPA2.git",
+                "input_plugin": "raspa",
+                "on_computer": true,
+                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/simulate_4467e14_fidis",
+                "prepend_text": "export RASPA_DIR=/work/lsmo/aiida-lsmo-codes/data/raspa\nexport DYLD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\nexport LD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\n",
+                "append_text": " "
+            },
+            "cp2k-5.1": {
+                "label": "cp2k-5.1",
+                "description": "CP2K 5.1 compiled by SCITAS",
+                "input_plugin": "cp2k",
+                "on_computer": true,
+                "remote_abs_path": "/ssoft/spack/cornalin/v2/opt/spack/linux-rhel7-x86_E5v4_Mellanox/intel-17.0.2/cp2k-5.1-gke4ujsx5qhx6zt7ncfo22hajqhp6n6b/bin/cp2k.popt",
+                "prepend_text": "source /ssoft/spack/bin/slmodules.sh -r deprecated\nmodule load intel\nmodule load intel-mpi intel-mkl\nmodule load cp2k/5.1-mpi\nexport CP2K_DATA_DIR=/work/lsmo/aiida-lsmo-codes/data/cp2k/data\n",
+                "append_text": " "
+            },
+            "cp2k-7.1": {
+                "label": "cp2k-7.1",
+                "description": "CP2K 7.1 compiled by SCITAS",
+                "input_plugin": "cp2k",
+                "on_computer": true,
+                "remote_abs_path": "/ssoft/spack/arvine/v1/opt/spack/linux-rhel7-broadwell/gcc-8.4.0/cp2k-7.1-jerat2sgqdsk3pkuxbksoxptromkqk4k/bin/cp2k.popt",
+                "prepend_text": "module load gcc/8.4.0\nmodule load mvapich2/2.3.4\nmodule load cp2k/7.1-mpi\nexport CP2K_DATA_DIR=/work/lsmo/aiida-lsmo-codes/data/cp2k/data\n",
+                "append_text": " "
+            }
+        },
+        "fidis-serial": {
+            "computer-setup": {
+                "label": "fidis-serial",
+                "hostname": "fidis.epfl.ch",
+                "description": "Fidis EPFL computer using serial partition",
+                "transport": "ssh",
+                "scheduler": "slurm",
+                "work_dir": "/scratch/{username}/aiida_run/",
+                "shebang": "#!/bin/bash",
+                "mpirun_command": "srun -n {tot_num_mpiprocs}",
+                "mpiprocs_per_machine": 1,
+                "prepend_text": "#SBATCH --partition=serial",
+                "append_text": " "
+            },
+            "computer-configure": {
+                "proxy_command": "ssh -q -Y {username}@lsmosrv1.epfl.ch netcat fidis.epfl.ch 22"
+            },
+            "ddec-09_26_2017": {
+                "label": "ddec-09_26_2017",
+                "description": "chargemol_09_26_2017 precompiled linux/parallel binary from https://sourceforge.net/projects/ddec/files/",
+                "input_plugin": "ddec",
+                "on_computer": true,
+                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/chargemol_09_26_2017_ubu18",
+                "prepend_text": " ",
+                "append_text": " "
+            },
+            "zeopp-46ce745": {
+                "label": "zeopp-46ce745",
+                "description": "Zeo++ cloned from https://github.com/mharanczyk/zeoplusplus",
+                "input_plugin": "zeopp.network",
+                "on_computer": true,
+                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/network_46ce745_ubu18",
+                "prepend_text": " ",
+                "append_text": " "
+            },
+            "raspa-4467e14": {
+                "label": "raspa-4467e14",
+                "description": "RASPA2 cloned from https://github.com/iRASPA/RASPA2.git",
+                "input_plugin": "raspa",
+                "on_computer": true,
+                "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/simulate_4467e14_fidis",
+                "prepend_text": "export RASPA_DIR=/work/lsmo/aiida-lsmo-codes/data/raspa\nexport DYLD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\nexport LD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\n",
+                "append_text": " "
+            },
+            "cp2k-5.1": {
+                "label": "cp2k-5.1",
+                "description": "CP2K 5.1 compiled by SCITAS",
+                "input_plugin": "cp2k",
+                "on_computer": true,
+                "remote_abs_path": "/ssoft/spack/cornalin/v2/opt/spack/linux-rhel7-x86_E5v4_Mellanox/intel-17.0.2/cp2k-5.1-gke4ujsx5qhx6zt7ncfo22hajqhp6n6b/bin/cp2k.popt",
+                "prepend_text": "source /ssoft/spack/bin/slmodules.sh -r deprecated\nmodule load intel\nmodule load intel-mpi intel-mkl\nmodule load cp2k/5.1-mpi\nexport CP2K_DATA_DIR=/work/lsmo/aiida-lsmo-codes/data/cp2k/data\n",
+                "append_text": " "
+            },
+            "cp2k-7.1": {
+                "label": "cp2k-7.1",
+                "description": "CP2K 7.1 compiled by SCITAS",
+                "input_plugin": "cp2k",
+                "on_computer": true,
+                "remote_abs_path": "/ssoft/spack/arvine/v1/opt/spack/linux-rhel7-broadwell/gcc-8.4.0/cp2k-7.1-jerat2sgqdsk3pkuxbksoxptromkqk4k/bin/cp2k.popt",
+                "prepend_text": "module load gcc/8.4.0\nmodule load mvapich2/2.3.4\nmodule load cp2k/7.1-mpi\nexport CP2K_DATA_DIR=/work/lsmo/aiida-lsmo-codes/data/cp2k/data\n",
+                "append_text": " "
+            }
+        },
+        "default": "fidis"
+    },
     "eiger.cscs.ch": {
         "multicore-mr0": {
-            "computer-configure": {
-                "safe_interval": 60,
-                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat eiger.cscs.ch 22"
-            },
             "computer-setup": {
                 "label": "eiger-mc-mr0",
                 "hostname": "eiger.cscs.ch",
@@ -646,21 +627,16 @@
                 "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=normal\n#SBATCH --account=mr0\n#SBATCH --constraint=mc\n#SBATCH --hint=nomultithread\n\nexport OMP_PROC_BIND=close\nexport OMP_PLACES=cores\n### computer prepend_text end ###\n",
                 "append_text": " "
             },
+            "computer-configure": {
+                "safe_interval": 60,
+                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat eiger.cscs.ch 22"
+            },
             "dos-6.8-multicore": {
                 "label": "dos-6.8",
                 "description": "Quantum ESPRESSO dos.x v6.8 Compiled with CpeIntel v21.08",
                 "input_plugin": "quantumespresso.dos",
                 "on_computer": true,
                 "remote_abs_path": "/apps/eiger/UES/jenkins/1.4.0/software/QuantumESPRESSO/6.8.0-cpeIntel-21.08/bin/dos.x",
-                "prepend_text": "module load cpeIntel\nmodule load QuantumESPRESSO/6.8.0\n\nexport OMP_NUM_THREADS=1\n",
-                "append_text": " "
-            },
-            "pw-6.8-multicore": {
-                "label": "pw-6.8",
-                "description": "Quantum ESPRESSO dos.x v6.8 Compiled with CpeIntel v21.08",
-                "input_plugin": "quantumespresso.pw",
-                "on_computer": true,
-                "remote_abs_path": "/apps/eiger/UES/jenkins/1.4.0/software/QuantumESPRESSO/6.8.0-cpeIntel-21.08/bin/pw.x",
                 "prepend_text": "module load cpeIntel\nmodule load QuantumESPRESSO/6.8.0\n\nexport OMP_NUM_THREADS=1\n",
                 "append_text": " "
             },
@@ -672,13 +648,18 @@
                 "remote_abs_path": "/apps/eiger/UES/jenkins/1.4.0/software/QuantumESPRESSO/6.8.0-cpeIntel-21.08/bin/projwfc.x",
                 "prepend_text": "module load cpeIntel\nmodule load QuantumESPRESSO/6.8.0\n\nexport OMP_NUM_THREADS=1\n",
                 "append_text": " "
+            },
+            "pw-6.8-multicore": {
+                "label": "pw-6.8",
+                "description": "Quantum ESPRESSO dos.x v6.8 Compiled with CpeIntel v21.08",
+                "input_plugin": "quantumespresso.pw",
+                "on_computer": true,
+                "remote_abs_path": "/apps/eiger/UES/jenkins/1.4.0/software/QuantumESPRESSO/6.8.0-cpeIntel-21.08/bin/pw.x",
+                "prepend_text": "module load cpeIntel\nmodule load QuantumESPRESSO/6.8.0\n\nexport OMP_NUM_THREADS=1\n",
+                "append_text": " "
             }
         },
         "multicore-mr0-debug": {
-            "computer-configure": {
-                "safe_interval": 60,
-                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat eiger.cscs.ch 22"
-            },
             "computer-setup": {
                 "label": "eiger-mc-mr0-debug",
                 "hostname": "eiger.cscs.ch",
@@ -692,21 +673,16 @@
                 "prepend_text": "### computer prepend_text start ###\n#SBATCH --partition=debug\n#SBATCH --account=mr0\n#SBATCH --constraint=mc\n#SBATCH --hint=nomultithread\n#SBATCH --time=00:30:00\n\nexport OMP_PROC_BIND=close\nexport OMP_PLACES=cores\n### computer prepend_text end ###\n",
                 "append_text": " "
             },
+            "computer-configure": {
+                "safe_interval": 60,
+                "proxy_command": "ssh -q -Y {username}@ela.cscs.ch netcat eiger.cscs.ch 22"
+            },
             "dos-6.8-multicore": {
                 "label": "dos-6.8",
                 "description": "Quantum ESPRESSO dos.x v6.8 Compiled with CpeIntel v21.08",
                 "input_plugin": "quantumespresso.dos",
                 "on_computer": true,
                 "remote_abs_path": "/apps/eiger/UES/jenkins/1.4.0/software/QuantumESPRESSO/6.8.0-cpeIntel-21.08/bin/dos.x",
-                "prepend_text": "module load cpeIntel\nmodule load QuantumESPRESSO/6.8.0\n\nexport OMP_NUM_THREADS=1\n",
-                "append_text": " "
-            },
-            "pw-6.8-multicore": {
-                "label": "pw-6.8",
-                "description": "Quantum ESPRESSO dos.x v6.8 Compiled with CpeIntel v21.08",
-                "input_plugin": "quantumespresso.pw",
-                "on_computer": true,
-                "remote_abs_path": "/apps/eiger/UES/jenkins/1.4.0/software/QuantumESPRESSO/6.8.0-cpeIntel-21.08/bin/pw.x",
                 "prepend_text": "module load cpeIntel\nmodule load QuantumESPRESSO/6.8.0\n\nexport OMP_NUM_THREADS=1\n",
                 "append_text": " "
             },
@@ -718,8 +694,50 @@
                 "remote_abs_path": "/apps/eiger/UES/jenkins/1.4.0/software/QuantumESPRESSO/6.8.0-cpeIntel-21.08/bin/projwfc.x",
                 "prepend_text": "module load cpeIntel\nmodule load QuantumESPRESSO/6.8.0\n\nexport OMP_NUM_THREADS=1\n",
                 "append_text": " "
+            },
+            "pw-6.8-multicore": {
+                "label": "pw-6.8",
+                "description": "Quantum ESPRESSO dos.x v6.8 Compiled with CpeIntel v21.08",
+                "input_plugin": "quantumespresso.pw",
+                "on_computer": true,
+                "remote_abs_path": "/apps/eiger/UES/jenkins/1.4.0/software/QuantumESPRESSO/6.8.0-cpeIntel-21.08/bin/pw.x",
+                "prepend_text": "module load cpeIntel\nmodule load QuantumESPRESSO/6.8.0\n\nexport OMP_NUM_THREADS=1\n",
+                "append_text": " "
             }
         },
         "default": "multicore-mr0"
+    },
+    "paratera": {
+        "tianhe-2": {
+            "computer-setup": {
+                "label": "paratera-th2",
+                "description": "TianHe-2 supercomputer provided by paratera",
+                "hostname": "119.90.38.52",
+                "transport": "ssh",
+                "scheduler": "slurm",
+                "shebang": "#!/usr/bin/env bash",
+                "work_dir": "/PARA/{username}/aiida",
+                "mpirun_command": "srun -n {tot_num_mpiprocs}",
+                "mpiprocs_per_machine": 24,
+                "prepend_text": "",
+                "append_text": ""
+            },
+            "computer-configure": {
+                "port": 2200,
+                "allow_agent": false,
+                "safe_interval": 60.0,
+                "use_login_shell": true
+            },
+            "pw-6.5": {
+                "label": "pw-6.5",
+                "description": "Quantum ESPRESSO v6.5",
+                "input_plugin": "quantumespresso.pw",
+                "on_computer": true,
+                "remote_abs_path": "/WORK/app/Quantum_Espresso/6.5-MPI/bin/pw.x",
+                "prepend_text": "ulimit -s unlimited\nsource /PARA/app/scripts/cn-module.sh\nmodule load Quantum_Espresso/6.5-icc-15.0.1\n",
+                "append_text": " "
+            }
+        },
+        "default": "tianhe-2"
     }
 }
