@@ -528,15 +528,6 @@
                 "prepend_text": "export RASPA_DIR=/work/lsmo/aiida-lsmo-codes/data/raspa\nexport DYLD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\nexport LD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\n",
                 "append_text": " "
             },
-            "cp2k-5.1": {
-                "label": "cp2k-5.1",
-                "description": "CP2K 5.1 compiled by SCITAS",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/ssoft/spack/cornalin/v2/opt/spack/linux-rhel7-x86_E5v4_Mellanox/intel-17.0.2/cp2k-5.1-gke4ujsx5qhx6zt7ncfo22hajqhp6n6b/bin/cp2k.popt",
-                "prepend_text": "source /ssoft/spack/bin/slmodules.sh -r deprecated\nmodule load intel\nmodule load intel-mpi intel-mkl\nmodule load cp2k/5.1-mpi\nexport CP2K_DATA_DIR=/work/lsmo/aiida-lsmo-codes/data/cp2k/data\n",
-                "append_text": " "
-            },
             "cp2k-7.1": {
                 "label": "cp2k-7.1",
                 "description": "CP2K 7.1 compiled by SCITAS",
@@ -589,15 +580,6 @@
                 "on_computer": true,
                 "remote_abs_path": "/work/lsmo/aiida-lsmo-codes/bin/simulate_4467e14_fidis",
                 "prepend_text": "export RASPA_DIR=/work/lsmo/aiida-lsmo-codes/data/raspa\nexport DYLD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\nexport LD_LIBRARY_PATH=/work/lsmo/aiida-lsmo-codes/lib/raspa_4467e14_fidis\n",
-                "append_text": " "
-            },
-            "cp2k-5.1": {
-                "label": "cp2k-5.1",
-                "description": "CP2K 5.1 compiled by SCITAS",
-                "input_plugin": "cp2k",
-                "on_computer": true,
-                "remote_abs_path": "/ssoft/spack/cornalin/v2/opt/spack/linux-rhel7-x86_E5v4_Mellanox/intel-17.0.2/cp2k-5.1-gke4ujsx5qhx6zt7ncfo22hajqhp6n6b/bin/cp2k.popt",
-                "prepend_text": "source /ssoft/spack/bin/slmodules.sh -r deprecated\nmodule load intel\nmodule load intel-mpi intel-mkl\nmodule load cp2k/5.1-mpi\nexport CP2K_DATA_DIR=/work/lsmo/aiida-lsmo-codes/data/cp2k/data\n",
                 "append_text": " "
             },
             "cp2k-7.1": {
