@@ -63,9 +63,9 @@ def update_to_v2_entry_points(comp_setup: dict) -> dict:
             new_comp_setup[key] = f"core.{value}"
         else:
             new_comp_setup[key] = value
-            
+
     return new_comp_setup
-            
+
 
 final_dict_v2 = copy.deepcopy(final_dict)
 
@@ -74,7 +74,7 @@ for domain in final_dict_v2:
     for computer in final_dict_v2[domain]:
         if computer != 'default':
             final_dict_v2[domain][computer]["computer-setup"] = update_to_v2_entry_points(final_dict_v2[domain][computer]["computer-setup"])
-            
+
 # Prepare the config db for aiida 2.1 data type entry points compatibility
 def update_to_v2_1_entry_points(code_setup: dict) -> dict:
     """
@@ -92,7 +92,7 @@ def update_to_v2_1_entry_points(code_setup: dict) -> dict:
             new_code_setup["filepath_executable"] = value
         else:
             new_code_setup[key] = value
-            
+
     return new_code_setup
 
 final_dict_v2_1 = copy.deepcopy(final_dict_v2)
