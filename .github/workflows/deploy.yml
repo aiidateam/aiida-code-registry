@@ -10,7 +10,7 @@ on:
 jobs:
 
     deploy-gh-pages:
-        if: github.repository == 'aiidateam/aiida-code-registry'
+        if: github.repository == 'unkcpz/aiida-code-registry'
         runs-on: ubuntu-latest
         env:
             COMMIT_AUTHOR: Deploy Action
