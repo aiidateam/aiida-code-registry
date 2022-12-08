@@ -57,11 +57,15 @@ def update_to_v2_entry_points(comp_setup: dict) -> dict:
     v1 -> v2 with attach `core.` in front for transport and scheduler.
     This is a mutate function will change the value of argument `comp_setup`
     """
-    for key in ['transport', 'scheduler']:
-        try:
-            comp_setup[key] = f"core.{comp_setup[key]}"
-        except KeyError:
-            print(f"No {key} key specified for {comp_setup['label']}")
+    new_comp_setup = {}
+    for key, value in comp_setup.items():
+        if key in ['transport', 'scheduler']:
+            new_comp_setup[key] = f"core.{value}"
+        else:
+            new_comp_setup[key] = value
+
+    return new_comp_setup
+
 
 final_dict_v2 = copy.deepcopy(final_dict)
 
@@ -69,13 +73,47 @@ final_dict_v2 = copy.deepcopy(final_dict)
 for domain in final_dict_v2:
     for computer in final_dict_v2[domain]:
         if computer != 'default':
-            update_to_v2_entry_points(final_dict_v2[domain][computer]["computer-setup"])
+            final_dict_v2[domain][computer]["computer-setup"] = update_to_v2_entry_points(final_dict_v2[domain][computer]["computer-setup"])
+
+# Prepare the config db for aiida 2.1 data type entry points compatibility
+def update_to_v2_1_entry_points(code_setup: dict) -> dict:
+    """
+    v2 -> v2.1
+    orm.Code to orm.InstalledCode setup.
+    """
+    # New parameters of InstalledCode setup
+    new_code_setup = {}
+    for key, value in code_setup.items():
+        if key == "input_plugin":
+            new_code_setup["default_calc_job_plugin"] = value
+        elif key == "on_computer":
+            continue
+        elif key == "remote_abs_path":
+            new_code_setup["filepath_executable"] = value
+        else:
+            new_code_setup[key] = value
+
+    return new_code_setup
+
+final_dict_v2_1 = copy.deepcopy(final_dict_v2)
+
+# Loop over or the fields and update to compatible with aiida 2.x entry points name
+for domain in final_dict_v2_1:
+    for computer in final_dict_v2_1[domain]:
+        if computer != 'default':
+            for key in final_dict_v2_1[domain][computer]:
+                if key not in ['computer-setup', 'computer-configure']:
+                    final_dict_v2_1[domain][computer][key] = update_to_v2_1_entry_points(final_dict_v2_1[domain][computer][key])
 
 # Store the extracted information as a single JSON file.
 os.mkdir(folder_path/'out')
 with open(folder_path/'out/database.json', 'w') as filep:
     json.dump(final_dict, filep, indent=4)
 
-# Stroe the v2 compatible entry points
+# Store the v2 compatible entry points
 with open(folder_path/'out/database_v2.json', 'w') as filep:
     json.dump(final_dict_v2, filep, indent=4)
+
+# Store the v2.1 compatible code data
+with open(folder_path/'out/database_v2_1.json', 'w') as filep:
+    json.dump(final_dict_v2_1, filep, indent=4)
