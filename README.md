@@ -10,7 +10,7 @@ This repository collects configurations of simulation codes on public compute re
 import aiida_code_registry as registry
 
 code1 = registry.load_code('base@localhost')
-code2 = registry.load_code('qe-pw@localhost', template_vars(dict(executable='pw')))
+code2 = registry.load_code('qe-pw@localhost', template_vars=dict(executable='pw')))
 ```
 
 ## Using the AiiDA code registry
