@@ -1,0 +1,11 @@
+---
+label: pw-7.0
+description: PW compiled for GPU
+input_plugin: quantumespresso.pw
+on_computer: true
+remote_abs_path: /opt/psi/MPI/qe/7.0/pgi-mpi/21.5/pgi/21.5/bin/pw.x
+prepend_text: |
+    module use unstable;
+    module load pgi/21.5 pgi-mpi/21.5
+    module load qe/7.0
+append_text: ' '
