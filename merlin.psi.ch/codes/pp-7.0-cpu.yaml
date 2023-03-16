@@ -1,0 +1,11 @@
+---
+label: pp-7.0
+description: PP compiled for CPU
+input_plugin: quantumespresso.pp
+on_computer: true
+remote_abs_path: /opt/psi/MPI/qe/7.0/openmpi/4.1.3_slurm/gcc/11.2.0/bin/pp.x
+prepend_text: |
+    module use unstable;
+    module load gcc/11.2.0 openmpi/4.1.3_slurm
+    module load qe/7.0
+append_text: ' '
