@@ -1,11 +1,12 @@
+---
 label: qe-7.0-hp
 description: Quantum ESPRESSO hp.x v7.0 Compiled with CpeIntel v21.12
 default_calc_job_plugin: quantumespresso.hp
 computer: eiger
 filepath_executable: /apps/pilatus/UES/jenkins/1.4.0/software/QuantumESPRESSO/7.0-cpeIntel-21.12/bin/hp.x
-prepend_text: |+
-  module load cpeIntel
-  module load QuantumESPRESSO/7.0
+prepend_text: |
+    module load cpeIntel
+    module load QuantumESPRESSO/7.0
 
-  export OMP_NUM_THREADS=1
+    export OMP_NUM_THREADS=1
 append_text: ' '
