@@ -1,3 +1,14 @@
----
-safe_interval: 60
-proxy_command: ssh -q -Y {username}@ela.cscs.ch netcat eiger.cscs.ch 22
+port: 22
+look_for_keys: True
+timeout: 60
+allow_agent: True
+proxy_jump: ''
+compress: True
+gss_auth: False
+gss_kex: False
+gss_deleg_creds: False
+gss_host: eiger.cscs.ch
+load_system_host_keys: True
+key_policy: RejectPolicy
+use_login_shell: False
+safe_interval: 10
