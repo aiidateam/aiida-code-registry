@@ -1,0 +1,3 @@
+---
+safe_interval: 60
+proxy_jump: '{username}@ela.cscs.ch'

@@ -1,0 +1,18 @@
+---
+label: merlin6
+hostname: merlin-l-01.psi.ch
+description: Merlin6 HPC at PSI
+transport: ssh
+scheduler: slurm
+work_dir: /shared-scratch/{username}/aiida_run/
+shebang: '#!/bin/bash'
+mpirun_command: srun -n {tot_num_mpiprocs}
+mpiprocs_per_machine: 1
+prepend_text: |
+    ### computer prepend_text start ###
+    #SBATCH --cluster=gmerlin6
+    #SBATCH --partition=gpu
+    #SBATCH --account=merlin
+    ulimit -s unlimited
+    ### computer prepend_text end ###
+append_text: ' '

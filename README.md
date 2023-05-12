@@ -4,6 +4,8 @@
 
 This repository collects configurations of simulation codes on public compute resources for quick and easy setup in AiiDA.
 
+The registry computers and codes database are released as JSON files on: https://aiidateam.github.io/aiida-code-registry/
+
 ## Using the AiiDA code registry
 
 In the following we'll take the example of [Piz Daint](https://www.cscs.ch/computers/piz-daint/), a HPC system at the Swiss National Supercomputing Centre.

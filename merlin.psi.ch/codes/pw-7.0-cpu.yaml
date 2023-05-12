@@ -1,0 +1,11 @@
+---
+label: pw-7.0
+description: PW compiled for CPU
+input_plugin: quantumespresso.pw
+on_computer: true
+remote_abs_path: /opt/psi/MPI/qe/7.0/openmpi/4.1.3_slurm/gcc/11.2.0/bin/pw.x
+prepend_text: |
+    module use unstable;
+    module load gcc/11.2.0 openmpi/4.1.3_slurm
+    module load qe/7.0
+append_text: ' '
