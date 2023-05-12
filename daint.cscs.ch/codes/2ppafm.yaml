@@ -1,6 +1,6 @@
 ---
-label: 2ppafm 
-description:   probe 2  particle afm python code https://github.com/Probe-Particle/ppafm.git
+label: 2ppafm
+description: probe 2  particle afm python code https://github.com/Probe-Particle/ppafm.git
 input_plugin: nanotech_empa.afm
 on_computer: true
 remote_abs_path: /users/cpi/aiida-soft/2pp/run_2pp.sh
