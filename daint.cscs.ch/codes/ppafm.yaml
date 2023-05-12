@@ -1,0 +1,11 @@
+---
+label: ppafm
+description: PPAFM code https://github.com/Probe-Particle/ppafm.git.
+input_plugin: nanotech_empa.afm
+on_computer: true
+remote_abs_path: /users/cpi/aiida-soft/run_ppafm.sh
+prepend_text: |
+    export PATH="/users/cpi/miniconda3/bin:$PATH"
+    eval "$(conda shell.posix hook)"
+    conda activate /users/cpi/miniconda3/envs/env-ppafm
+append_text: ' '

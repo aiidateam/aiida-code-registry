@@ -1,0 +1,11 @@
+---
+label: hrstm
+description: HRSTM code from https://github.com/nanotech-empa/cp2k-spm-tools.git
+input_plugin: nanotech_empa.hrstm
+on_computer: true
+remote_abs_path: /users/cpi/aiida-soft/cp2k-spm-tools/hrstm_from_wfn.py
+prepend_text: |
+    export PATH="/users/cpi/miniconda3/bin:$PATH"
+    eval "$(conda shell.posix hook)"
+    conda activate /users/cpi/miniconda3/envs/env-stm
+append_text: ' '
