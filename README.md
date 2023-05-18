@@ -1,10 +1,14 @@
 # AiiDA code registry
 
+(TODO: customize badge link to gh-pages branch)
+
 **THIS IS WORK IN PROGRESS - PULL REQUESTS & [SUGGESTIONS](https://github.com/aiidateam/aiida-code-registry/issues) HIGHLY WELCOME**
 
 This repository collects configurations of simulation codes on public compute resources for quick and easy setup in AiiDA.
 
 The registry computers and codes database are released as JSON files on: https://aiidateam.github.io/aiida-code-registry/
+
+Visit the page to see the current status of the registry https://unkcpz.github.io/aiida-code-registry/ (TODO: update link)
 
 ## Using the AiiDA code registry
 
