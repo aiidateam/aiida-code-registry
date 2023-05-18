@@ -1,5 +1,5 @@
 ---
-label: {{ label | default('daint-hybrid') }}
+label: "{{ label | default('daint-hybrid') }}"
 hostname: daint.cscs.ch
 description: Piz Daint supercomputer at CSCS Lugano, Switzerland, using the hybrid partition. HyperThreading is off
 transport: ssh

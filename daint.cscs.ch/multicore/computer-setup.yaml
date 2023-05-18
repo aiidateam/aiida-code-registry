@@ -1,5 +1,5 @@
 ---
-label: {{ label | default('daint-mc') }}
+label: "{{ label | default('daint-mc') }}"
 hostname: daint.cscs.ch
 description: Piz Daint supercomputer at CSCS Lugano, Switzerland, multicore partition.
 transport: ssh
