@@ -1,10 +1,11 @@
+---
 label: qe-7.2-pw
 description: Personal compilation of QE v7.2 on scratch for EPW runs
 default_calc_job_plugin: quantumespresso.pw
 computer: lumi
 filepath_executable: /scratch/project_465000106/src/qe-7.2/bin/pw.x
 use_double_quotes: true
-prepend_text: |+
+prepend_text: |
     module purge
     module load PrgEnv-gnu/8.3.3
     module load craype-x86-milan

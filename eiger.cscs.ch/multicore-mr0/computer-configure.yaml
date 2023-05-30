@@ -1,14 +1,15 @@
+---
 port: 22
-look_for_keys: True
+look_for_keys: true
 timeout: 60
-allow_agent: True
+allow_agent: true
 proxy_jump: ''
-compress: True
-gss_auth: False
-gss_kex: False
-gss_deleg_creds: False
+compress: true
+gss_auth: false
+gss_kex: false
+gss_deleg_creds: false
 gss_host: eiger.cscs.ch
-load_system_host_keys: True
+load_system_host_keys: true
 key_policy: RejectPolicy
-use_login_shell: False
+use_login_shell: false
 safe_interval: 10
