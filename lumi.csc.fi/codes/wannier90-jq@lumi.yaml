@@ -1,0 +1,18 @@
+label: wannier90-jq
+description: Personal compilation of WANNIER90 v3.1 on scratch for EPW runs
+default_calc_job_plugin: wannier90.wannier90
+computer: lumi
+filepath_executable: /projappl/project_465000106/juqiao/phase4/wannier90/wannier90.x
+use_double_quotes: true
+prepend_text: |+
+    module load PrgEnv-gnu/8.3.3
+    module load craype-x86-milan
+    module load cray-libsci/22.08.1.1
+    module load cray-fftw/3.3.10.1
+    module load cray-hdf5-parallel/1.12.1.5
+    module load cray-netcdf-hdf5parallel/4.8.1.5
+
+    export OMP_NUM_THREADS=1
+append_text: ' '
+
+

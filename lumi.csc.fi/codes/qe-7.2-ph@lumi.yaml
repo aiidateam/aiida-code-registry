@@ -1,0 +1,17 @@
+label: qe-7.2-ph
+description: Personal compilation of QE v7.2 on scratch for EPW runs
+default_calc_job_plugin: quantumespresso.ph
+computer: lumi
+filepath_executable: /scratch/project_465000106/src/qe-7.2/bin/ph.x
+use_double_quotes: true
+prepend_text: |+
+    module purge
+    module load PrgEnv-gnu/8.3.3
+    module load craype-x86-milan
+    module load cray-libsci/23.02.1.1
+    module load cray-fftw/3.3.10.3
+    module load cray-hdf5-parallel/1.12.2.3
+    module load cray-netcdf-hdf5parallel/4.9.0.3
+
+    export OMP_NUM_THREADS=1
+append_text: ' '

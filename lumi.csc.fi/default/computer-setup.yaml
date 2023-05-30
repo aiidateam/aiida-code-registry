@@ -1,0 +1,13 @@
+label: lumi
+description: LUMI - Supercomputer in the North
+hostname: lumi.csc.fi
+transport: core.ssh
+scheduler: core.slurm
+shebang: '#!/bin/bash'
+mpirun_command: srun -u -n {tot_num_mpiprocs}
+mpiprocs_per_machine: 128
+default_memory_per_machine: 227328000
+prepend_text: |+
+  #SBATCH --account=project_465000106
+  #SBATCH --mem=227328
+append_text: ' '
