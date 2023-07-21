@@ -1,10 +1,10 @@
 ---
-label: 'pw-7.2'
-description: 'PW compiled for daint-gpu'
-default_calc_job_plugin: 'quantumespresso.pw'
-filepath_executable: '/apps/daint/UES/jenkins/7.0.UP03/21.09/daint-gpu/software/QuantumESPRESSO/7.2-CrayNvidia-21.09/bin/pw.x'
-computer: 'daint-hybrid-s1141'
+label: pw-7.2
+description: PW compiled for daint-gpu
+default_calc_job_plugin: quantumespresso.pw
+filepath_executable: /apps/daint/UES/jenkins/7.0.UP03/21.09/daint-gpu/software/QuantumESPRESSO/7.2-CrayNvidia-21.09/bin/pw.x
+computer: daint-hybrid-s1141
 prepend_text: |
-   module load daint-gpu
-   module load QuantumESPRESSO
+    module load daint-gpu
+    module load QuantumESPRESSO
 append_text: ' '
