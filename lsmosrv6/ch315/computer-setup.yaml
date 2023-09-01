@@ -1,6 +1,6 @@
 ---
 label: ch315
-hostname: lsmosrv4.epfl.ch
+hostname: lsmosrv6.epfl.ch
 description: Local server ch315 at LSMO
 transport: ssh
 scheduler: slurm
