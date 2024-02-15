@@ -1,5 +1,10 @@
 # AiiDA code registry
 
+**THIS REPO IS GOING TO BE REPLACED BY https://github.com/aiidateam/aiida-resource-registry TO SUPPORT TEMPLATE.**
+
+For future resources setup contribution, please go to `aiida-resource-registry`.
+
+
 **THIS IS WORK IN PROGRESS - PULL REQUESTS & [SUGGESTIONS](https://github.com/aiidateam/aiida-code-registry/issues) HIGHLY WELCOME**
 
 This repository collects configurations of simulation codes on public compute resources for quick and easy setup in AiiDA.
