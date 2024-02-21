@@ -1,0 +1,12 @@
+---
+label: qe-7.0-ph
+description: Quantum ESPRESSO ph.x v7.0 Compiled with CpeIntel v21.12
+default_calc_job_plugin: quantumespresso.ph
+computer: eiger
+filepath_executable: /apps/pilatus/UES/jenkins/1.4.0/software/QuantumESPRESSO/7.0-cpeIntel-21.12/bin/ph.x
+prepend_text: |
+    module load cpeIntel
+    module load QuantumESPRESSO/7.0
+
+    export OMP_NUM_THREADS=1
+append_text: ' '

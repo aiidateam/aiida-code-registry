@@ -1,15 +1,18 @@
 ---
+username: mabercx
 port: 22
 look_for_keys: true
+key_filename: ~/.ssh/id_ed-lumi
 timeout: 60
 allow_agent: true
+proxy_command: ''
 proxy_jump: ''
 compress: true
 gss_auth: false
 gss_kex: false
 gss_deleg_creds: false
-gss_host: eiger.cscs.ch
+gss_host: lumi.csc.fi
 load_system_host_keys: true
 key_policy: RejectPolicy
-use_login_shell: false
-safe_interval: 10
+use_login_shell: true
+safe_interval: 10.0
