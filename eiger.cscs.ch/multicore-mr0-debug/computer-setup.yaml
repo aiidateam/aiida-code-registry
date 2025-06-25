@@ -1,9 +1,9 @@
 ---
 label: eiger-mc-mr0-debug
-hostname: eiger.cscs.ch
+hostname: eiger.alps.cscs.ch
 description: Eiger is the production partition on Alps, the HPE Cray EX Supercomputer.
-transport: ssh
-scheduler: slurm
+transport: core.ssh
+scheduler: core.slurm
 work_dir: /scratch/e1000/{username}/aiida/
 shebang: '#!/bin/bash'
 mpirun_command: srun -n {tot_num_mpiprocs}

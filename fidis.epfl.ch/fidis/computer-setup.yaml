@@ -2,8 +2,8 @@
 label: fidis
 hostname: fidis.epfl.ch
 description: fidis EPFL computer
-transport: ssh
-scheduler: slurm
+transport: core.ssh
+scheduler: core.slurm
 work_dir: /scratch/{username}/aiida_run/
 shebang: '#!/bin/bash'
 mpirun_command: srun -n {tot_num_mpiprocs}

@@ -2,8 +2,8 @@
 label: ch315
 hostname: lsmosrv6.epfl.ch
 description: Local server ch315 at LSMO
-transport: ssh
-scheduler: slurm
+transport: core.ssh
+scheduler: core.slurm
 work_dir: /home/{username}/aiida_run/
 shebang: '#!/bin/bash'
 mpirun_command: srun -n {tot_num_mpiprocs}
