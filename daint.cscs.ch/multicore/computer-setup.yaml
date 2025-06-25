@@ -1,9 +1,9 @@
 ---
 label: daint-mc
-hostname: daint.cscs.ch
+hostname: daint.alps.cscs.ch
 description: Piz Daint supercomputer at CSCS Lugano, Switzerland, multicore partition.
-transport: ssh
-scheduler: slurm
+transport: core.ssh
+scheduler: core.slurm
 work_dir: /scratch/snx3000/{username}/aiida_run/
 shebang: '#!/bin/bash'
 mpirun_command: srun -n {tot_num_mpiprocs}

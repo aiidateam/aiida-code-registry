@@ -1,13 +1,11 @@
 ---
 label: daint-hybrid-s1141
-hostname: daint.cscs.ch
+hostname: daint.alps.cscs.ch
 description: Piz Daint supercomputer at CSCS Lugano, Switzerland, using the hybrid partition. Project s1141
-transport: ssh
-scheduler: slurm
+transport: core.ssh
+scheduler: core.slurm
 shebang: '#!/bin/bash -l'
 mpiprocs_per_machine: 12
-num_cores_per_mpiproc: 1
-queue_name: normal
 work_dir: /scratch/snx3000/{username}/aiida/
 mpirun_command: srun -n {tot_num_mpiprocs}
 prepend_text: |

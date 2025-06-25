@@ -2,8 +2,8 @@
 label: paratera-th2
 description: TianHe-2 supercomputer provided by paratera
 hostname: 119.90.38.52
-transport: ssh
-scheduler: slurm
+transport: core.ssh
+scheduler: core.slurm
 shebang: '#!/usr/bin/env bash'
 work_dir: /PARA/{username}/aiida
 mpirun_command: srun -n {tot_num_mpiprocs}
