@@ -1,0 +1,10 @@
+---
+append_text: ''
+computer: thor
+default_calc_job_plugin: quantumespresso.pw
+description: QE 7.3 on Thor compiled with the Intel OneAPI compiler suite
+filepath_executable: /mnt/home/software/qe/7.3-ioapi/bin/pw.x
+label: qe-7.3-ioapi-pw
+prepend_text: source /mnt/home/software/qe/7.3-ioapi/source.sh
+use_double_quotes: 'False'
+with_mpi: 'True'
